@@ -1,36 +1,26 @@
 <div class="row  text-right">
-  <div class="col-sm-4">
-
-    <div class="card">
+  <div class="col-sm">
+    <div class="card shadow-sm p-3 mb-5 bg-white rounded">
       <div class="card-body">
         <h5 class="card-title">הוספת מקצוע חדש</h5>
         <form (ngSubmit)="onSubmitForm()" #signupForm="ngForm" dir="rtl">
-          <div class="input-group mb-3">
-            <div class="input-group-append">
-              <span class="input-group-text" id="name">שם: </span>
-            </div>
-            <input [(ngModel)]="subject.Name" name="name" type="text" class="form-control"
-              id="name" aria-describedby="name"  required>
+          <div class="form-group">
+            <label for="name">שם: </label>
+            <input [(ngModel)]="subject.Name" name="name" type="text" class="form-control" id="name"
+              aria-describedby="name" required>
           </div>
-          <div class="input-group mb-3">
-            <div class="input-group-append">
-              <span class="input-group-text" id="groups">קבוצה? </span>
-            </div>
-            <input style="outline: none; -webkit-box-shadow: none;
-            box-shadow: none;" type="checkbox" [ngModel]="subject.groups" [ngModelOptions]="{standalone: true}"
-              (change)="subject.groups = !subject.groups" name="groups" class="form-control text-right" id="groups">
+          <div class="form-group">
+            <label for="groups">קבוצה? </label>&nbsp;
+            <input type="checkbox" [ngModel]="subject.groups" [ngModelOptions]="{standalone: true}"
+              (change)="subject.groups = !subject.groups" name="groups" class="form-check-input" id="groups">
           </div>
-          <div class="input-group mb-3">
-            <div class="input-group-append">
-              <span class="input-group-text" id="name">שם: </span>
-            </div>
+          <div class="form-group">
+            <label for="group1">שם: </label>
             <input [(ngModel)]="subject.Group1" name="group1" type="text" [readOnly]="!subject.groups"
               class="form-control" id="group1" aria-describedby="group1">
           </div>
-          <div class="input-group mb-3">
-            <div class="input-group-append">
-              <span class="input-group-text" id="name">שם: </span>
-            </div>
+          <div class="form-group">
+            <label for="group2">שם: </label>
             <input [(ngModel)]="subject.Group2" name="group2" type="text" [readOnly]="!subject.groups"
               class="form-control" id="group2" aria-describedby="group2">
           </div>
@@ -40,40 +30,50 @@
     </div>
   </div>
   <div class="col-sm-8">
-    <div class="card">
+    <div class="card shadow-sm p-3 mb-5 bg-white rounded">
       <form>
-        <input [(ngModel)]="search" class="text-center form-control form-control-lg" placeholder="חיפוש"
-          name="search"><br>
+        <div class="card-header">
+          <h2 dir="rtl" class="text-center">כל המקצועות</h2>
+          <label class="sr-only" for="search">חיפוש מקצוע</label>
+          <div class="input-group mb-2">
+            <div class="input-group-append  ">
+              <div class="input-group-text">חיפוש מקצוע</div>
+            </div>
+            <input [(ngModel)]="search" id="search" class="text-center form-control form-control-lg"
+              placeholder="התחילי להקליד..." name="search"><br>
+          </div>
+        </div>
+        <br>
         <ul class="list-group list-group-flush" *ngFor="let n of subjectList | filter: search" name="divS">
           <li class="list-group-item">
             <div class="container">
               <div class="row">
-                <li class="col card-title list-group-item">
-                  {{n.Name}}
-                </li>
-                <div class="col">
-                  <button type="button" class="btn btn-danger btn-block" (click)="Delete(n)">למחיקה</button>
-                </div>
-                <div class="col">
-                  <button type="button" class="btn btn-warning btn-block" (click)="update(n)">לעידכון</button>
-                </div>
-              </div>
-            </div>
+          <li class="col card-title list-group-item">
+            {{n.Name}}
           </li>
-
-        </ul>
-      </form>
+          <div class="col">
+            <button type="button" class="btn btn-danger btn-block" (click)="Delete(n)">למחיקה</button>
+          </div>
+          <div class="col">
+            <button type="button" class="btn btn-warning btn-block" (click)="update(n)">לעידכון</button>
+          </div>
     </div>
+  </div>
+  </li>
+
+  </ul>
+  </form>
+</div>
 
 
 
 
-    <!-- <input [(ngModel)]="search" placeholder="search" name="search"><br>
+<!-- <input [(ngModel)]="search" placeholder="search" name="search"><br>
 
     <div *ngFor="let n of subjectList | filter: search" name="divS">
       {{n.Name}}
       <button (click)="Delete(n)">למחיקה</button>
       <button (click)="update(n)">לעידכון</button>
     </div> -->
-  </div>
+</div>
 </div>
