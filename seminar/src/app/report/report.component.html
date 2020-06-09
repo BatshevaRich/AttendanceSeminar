@@ -1,0 +1,24 @@
+<input type="button" value="CPTURE" />  
+<!-- (click)="captureScreen()" -->
+<table>
+    <thead>
+        <th></th>
+           
+        
+        <th> שם מורה </th>
+        <th> ת"ז מורה </th>
+        <th>  שעות עבודה </th>
+        
+        <th> שעות מחלה </th>
+        <th> ימי עבודה </th> 
+    </thead>
+`
+  <tr  *ngFor="let t of dictionary">מורה
+        <td>{{t.Teacher.CodeTeacher}}</td>
+        <td>{{t.Teacher.Name}}</td>
+        <td>{{t.Arr[0]}}</td><td>{{t.Arr[1]}}</td><td>{{t.Arr[2]}}</td>
+    </tr>
+    <tr >
+        <td></td>
+    </tr>
+</table>

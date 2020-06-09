@@ -1,0 +1,44 @@
+<form (ngSubmit)="onSubmitForm()" #signupForm="ngForm">
+  <label>
+      <!-- id: -->
+  <!-- <input required type="number" [(ngModel)]="subject.code" name="id"> -->
+   
+  </label>
+  <br>
+  <label>
+      name:
+  <input  [(ngModel)]="subject.Name" name="name" >
+  
+  </label>
+  <br>
+  <label>
+    groups?:
+          <input type="checkbox" [(ngModel)]="subject.groups" name="groups">
+</label>
+<br>
+  <label>
+    group1:
+          <input type="text" [(ngModel)]="subject.Group1" name="group1" [disabled]="!subject.groups">
+</label>
+<br>
+  <label>
+    group2:
+    <input type="text" [(ngModel)]="subject.Group2" name="group2" [disabled]="!subject.groups"> 
+  </label>
+  <br>
+  
+  
+  <div *ngIf="signupForm.invalid">
+    the form is invalid,please insert ...
+  </div>
+  
+  <button type="submit" [disabled]="signupForm.invalid">new subject</button>
+</form>
+<input [(ngModel)]="search" placeholder="search" name="search"><br>
+  
+  <div *ngFor="let n of subjectList | filter: search" name="divS" >
+        {{n.Name}}
+        <button (click)="Delete(n)">למחיקה</button>
+        <button (click)="update(n)">לעידכון</button>
+  </div>
+ 

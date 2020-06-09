@@ -1,0 +1,14 @@
+<div class="panel-footer">
+  {{showTeacher.Name}}:שם 
+  {{showTeacher.CodeTeacher}}:ת"ז        
+  <span *ngIf="showTeacher.Permanent==true">
+    :שעות {{showTeacher.Hour_teken_month}}
+  </span>
+ <span *ngIf="showTeacher.Permanent==false">      
+
+אין תקן   
+
+</span>
+     
+</div>
+

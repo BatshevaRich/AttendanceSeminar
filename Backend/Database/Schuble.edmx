@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="sqlModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="class">
+          <Key>
+            <PropertyRef Name="codeClass" />
+          </Key>
+          <Property Name="codeClass" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Presence">
+          <Key>
+            <PropertyRef Name="codePresence" />
+          </Key>
+          <Property Name="codePresence" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codeTecher" Type="int" />
+          <Property Name="dateDay" Type="date" />
+          <Property Name="mis_Hour" Type="int" />
+          <Property Name="statusToDay" Type="int" />
+          <Property Name="day" Type="int" />
+        </EntityType>
+        <EntityType Name="schedule">
+          <Key>
+            <PropertyRef Name="code_schedule" />
+          </Key>
+          <Property Name="code_schedule" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="hour_in_dey" Type="int" />
+          <Property Name="class" Type="int" />
+          <Property Name="groups" Type="int" />
+          <Property Name="subjectIn" Type="int" />
+          <Property Name="techer" Type="int" />
+          <Property Name="day" Type="int" />
+        </EntityType>
+        <EntityType Name="statusN">
+          <Key>
+            <PropertyRef Name="codeStatus" />
+          </Key>
+          <Property Name="codeStatus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="status" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="subjectToClass">
+          <Key>
+            <PropertyRef Name="codeSubject" />
+          </Key>
+          <Property Name="codeSubject" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="30" />
+          <Property Name="group1" Type="nvarchar" MaxLength="40" />
+          <Property Name="group2" Type="nvarchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="techer">
+          <Key>
+            <PropertyRef Name="codeTecher" />
+          </Key>
+          <Property Name="codeTecher" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="30" />
+          <Property Name="permanent" Type="bit" />
+          <Property Name="hour_teken_month" Type="int" />
+        </EntityType>
+        <Association Name="FK__Presence__status__4F47C5E3">
+          <End Role="statusN" Type="Self.statusN" Multiplicity="0..1" />
+          <End Role="Presence" Type="Self.Presence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="statusN">
+              <PropertyRef Name="codeStatus" />
+            </Principal>
+            <Dependent Role="Presence">
+              <PropertyRef Name="statusToDay" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__schedule__class__0F624AF8">
+          <End Role="class" Type="Self.class" Multiplicity="0..1" />
+          <End Role="schedule" Type="Self.schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="class">
+              <PropertyRef Name="codeClass" />
+            </Principal>
+            <Dependent Role="schedule">
+              <PropertyRef Name="class" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+
+    </edmx:StorageModels>
+
+  </edmx:Runtime>
+</edmx:Edmx>

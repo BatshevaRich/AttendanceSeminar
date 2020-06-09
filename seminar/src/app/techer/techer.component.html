@@ -1,0 +1,47 @@
+
+<!-- <div class="alert alert-success" *ngIf="showSuccess">{{successMsg}}</div> -->
+<form (ngSubmit)="onSubmitForm()" #signupForm="ngForm">
+    <label>
+        id:
+    <input required type="number" [(ngModel)]="techar.CodeTeacher" name="CodeTeacher">
+        <br>
+    </label>
+    <br>
+
+    <label>
+        name:
+    <input  [(ngModel)]="techar.Name" name="Name" >
+        <br>
+    </label>
+    <br>
+    <label>
+        teken:
+            <input type="checkbox" [(ngModel)]="techar.Permanent" name="Permanent">
+  </label>
+          <br>
+    <label>
+      yaer number:
+      <input type="number" [(ngModel)]="techar.Hour_teken_month" name="Hour_teken_month" [disabled]="!techar.Permanent"> 
+    </label>
+    <br>
+    
+    
+    <div *ngIf="signupForm.invalid">
+      the form is invalid,please insert ...
+    </div>
+    
+    <button type="submit" [disabled]="signupForm.invalid">new techer</button>
+  </form>
+  <br>
+ 
+  <input [(ngModel)]="search" placeholder="search" name="search" [(ngModel)]="teacherDel" #val><br>
+  
+  <div *ngFor="let n of names | filter: search">
+       <app-show-teacher [showTeacher]="n"></app-show-teacher> 
+       <button (click)="Delete(n)">למחיקת המורה</button>
+       <button (click)="update(n)">לעידכון המורה</button>
+  </div>  
+  
+ 
+
+<!-- <button [ngStyle]="{background: 'red'}">Button</button> -->
