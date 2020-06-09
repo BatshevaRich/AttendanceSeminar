@@ -13,14 +13,14 @@ namespace myApi.Controllers
     {
         // GET: api/Presence
         [Route("api/getReport")]
-        public List<Dictionary> Get()
+        public List<common.Dictionary> Get()
         {
-            List<Dictionary> dictionaries = new List<Dictionary>(); ;
-            var p = PreseneManager.getInfoForResponce();
+            List<common.Dictionary> dictionaries = new List<Dictionary>(); ;
+            var p = PreseneManger.getInfoForResponce();
            // common.Dictionary dictionary;
             foreach (var item in p)
             {
-               // dictionaries.Add(new Dictionary() { Teacher = item.Key, Arr = item.Value });
+                dictionaries.Add(new Dictionary() {Teacher=item.Key,Arr=item.Value });
             }
             return dictionaries;
         }
@@ -35,7 +35,7 @@ namespace myApi.Controllers
         [Route("api/addPresnce")]
         public void Post([FromBody]Presence value)
         {
-            PreseneManager.AddPresence(value);
+            PreseneManger.AddPresence(value);
         }
 
         // PUT: api/Presence/5
@@ -43,7 +43,7 @@ namespace myApi.Controllers
         public void Put(int id, [FromBody]int codeTachar, int code, int hour, DateTime date, int day, int statusToDay)
         {
 
-            PreseneManager.Update(codeTachar, code, hour, date, day, statusToDay);
+            PreseneManger.Update(codeTachar, code, hour, date, day, statusToDay);
         }
 
         // DELETE: api/Presence/5

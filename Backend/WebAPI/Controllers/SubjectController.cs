@@ -16,7 +16,7 @@ namespace myApi.Controllers
         [Route("api/getAllSubjects")]
         public List<subjectToClass> Get()
         {
-            return ManagerSubject.GetSubjects();
+            return MangerSubject.GetSubjects();
         }
 
         // GET: api/Subject/5
@@ -29,21 +29,21 @@ namespace myApi.Controllers
         [Route("api/addSubject")]
         public void Post([FromBody]subjectToClass value)
         {
-            ManagerSubject.addSubject(value);
+            MangerSubject.addSubject(value);
         }
 
         // PUT: api/Subject/5
         [Route("api/updateSubject")]
         public void Put([FromBody]subjectToClass value)
         {
-            ManagerSubject.Update(value);
+            MangerSubject.Update(value);
         }
 
         // DELETE: api/Subject/5
         [Route("api/removeSubject/{id}")]
         public void Delete([FromUri] int id)
         {
-            ManagerSubject.remove(id);
+            MangerSubject.remove(id);
         }
     }
 }

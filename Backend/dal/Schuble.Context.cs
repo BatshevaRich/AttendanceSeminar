@@ -27,7 +27,7 @@ namespace dal
     
         public virtual DbSet<@class> @class { get; set; }
         public virtual DbSet<statusN> statusN { get; set; }
-        public virtual DbSet<Teacher> Teacher { get; set; }
+        public virtual DbSet<techer> techer { get; set; }
         public virtual DbSet<Presence> Presence { get; set; }
         public virtual DbSet<subjectToClass> subjectToClass { get; set; }
         public virtual DbSet<Table> Table { get; set; }

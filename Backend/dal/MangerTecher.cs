@@ -9,16 +9,16 @@ using System.Web.UI.WebControls;
 
 namespace dal
 {
-    public partial class Teacher
+    public partial class techer
     {
         public static void Add(Teacher t)
         {
-            Teacher Teacher = Mapper.Casting(t);
+            techer techer = Mapper.Casting(t);
             using (sqlEntities sqlEntities = new sqlEntities())
             {
                 try
                 {
-                    sqlEntities.Teacher.Add(Teacher);
+                    sqlEntities.techer.Add(techer);
                 }
                 catch (Exception e) { }
                //{("אין אפשרות להוסיף" + " אנא בדקי את הערכים שהכנסת"); }
@@ -30,7 +30,7 @@ namespace dal
         {
             using (sqlEntities sqlEntities = new sqlEntities())
             {
-                var s = sqlEntities.Teacher.Where(z => z.codeTeacher == id).First();
+                var s = sqlEntities.techer.Where(z => z.codeTecher == id).First();
                
                 //var users = s.schedule.ToList();
                 //var presence = s.Presence.ToList();
@@ -55,11 +55,11 @@ namespace dal
 
                     try
                     {
-                        var schedules = sqlEntities.schedules.Where(z => z.Teacher == id).ToList();
-                        var p = sqlEntities.Presence.Where(z => z.codeTeacher == id).ToList();
-                        schedules.ForEach(s1 => s1.Teacher1 = null);
-                        p.ForEach(p1 => p1.Teacher = null);
-                        sqlEntities.Teacher.Remove(s);
+                        var schedules = sqlEntities.schedules.Where(z => z.techer == id).ToList();
+                        var p = sqlEntities.Presence.Where(z => z.codeTecher == id).ToList();
+                        schedules.ForEach(s1 => s1.techer1 = null);
+                        p.ForEach(p1 => p1.techer = null);
+                        sqlEntities.techer.Remove(s);
                         sqlEntities.SaveChanges();
                     }
                     catch (NullReferenceException)
@@ -74,7 +74,7 @@ namespace dal
         {
             using (sqlEntities sqlEntities = new sqlEntities())
             {
-                var s = sqlEntities.Teacher.Where(z => z.codeTeacher == t.CodeTeacher).First();
+                var s = sqlEntities.techer.Where(z => z.codeTecher == t.CodeTeacher).First();
                 s.name = t.Name;
                 s.permanent = t.Permanent;
                 s.hour_teken_month = s.hour_teken_month;
@@ -82,16 +82,16 @@ namespace dal
               
             }
         }
-        public static List<Teacher> GetTeachers()
+        public static List<Teacher> GetTechers()
         {
             List<Teacher> teachers = new List<Teacher>();
-            IEnumerable<Teacher> a;
+            IEnumerable<techer> a;
             try
             {
                 using (sqlEntities sqlEntities = new sqlEntities())
                 {
 
-                    a = sqlEntities.Teacher.ToList();
+                    a = sqlEntities.techer.ToList();
                     foreach (var item in a)
                     {
                         var i = Mapper.Casting(item);

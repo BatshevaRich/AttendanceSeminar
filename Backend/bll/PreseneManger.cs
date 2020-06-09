@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace bll
 {
-    public static class PreseneManager
+    public static class PreseneManger
     {
         //הוספת חופש
         public static void holiday(DateTime dateStart, DateTime dateEnd)
@@ -43,12 +43,12 @@ namespace bll
             Presence.Add(presence);
         }
         //החזרת פרטים לדוח
-        public static Dictionary<Teacher,List<int>> getInfoForResponce()
+        public static Dictionary<common.Teacher,List<int>> getInfoForResponce()
         {
            
-            var Teachers = Teacher.GetTeachers();
-            var dictionary = new Dictionary<Teacher,List<int>>();
-            foreach (var item in Teachers)
+            var techers = techer.GetTechers();
+            var dictionary = new Dictionary<common.Teacher,List<int>>();
+            foreach (var item in techers)
             {
                 var a = Mapper.Casting(item);
              var p=Presence.getInfoForResponce(a);

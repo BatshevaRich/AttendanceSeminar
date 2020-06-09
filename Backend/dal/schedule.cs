@@ -19,11 +19,11 @@ namespace dal
         public Nullable<int> @class { get; set; }
         public Nullable<int> groups { get; set; }
         public Nullable<int> subjectIn { get; set; }
-        public Nullable<int> Teacher { get; set; }
+        public Nullable<int> techer { get; set; }
         public Nullable<int> day { get; set; }
     
         public virtual @class class1 { get; set; }
         public virtual subjectToClass subjectToClass { get; set; }
-        public virtual Teacher Teacher1 { get; set; }
+        public virtual techer techer1 { get; set; }
     }
 }

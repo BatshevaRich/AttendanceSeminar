@@ -41,7 +41,7 @@ namespace dal
             using (sqlEntities sqlEntities = new sqlEntities())
             {
                 var listMain = sqlEntities.schedules.Where(x => x.subjectIn == subject).ToList();
-                var listOrderTacher = listMain.OrderBy(x => x.Teacher).ToList();
+                var listOrderTacher = listMain.OrderBy(x => x.techer).ToList();
             }
         }
 

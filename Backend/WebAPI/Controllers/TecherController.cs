@@ -9,40 +9,40 @@ using System.Web.Http;
 
 namespace myApi.Controllers
 {
-    public class TeacherController : ApiController
+    public class TecherController : ApiController
     {
         [Route("api/getAllTeachers")]
-        // GET: api/Teacher
-        public List<dal.Teacher> Get()
+        // GET: api/Techer
+        public List<Teacher> Get()
         {
-            return TeacherManager.GetTeachers();
+            return bll.TecherManger.GetTeachers();
 
         }
 
-        // GET: api/Teacher/5
+        // GET: api/Techer/5
         public string Get(int id)
         {
             return "value";
         }
 
-        // POST: api/Teacher
+        // POST: api/Techer
         [Route("api/addTeacher")]
-        public void Post([FromBody]dal.Teacher value)
+        public void Post([FromBody]Teacher value)
         {
-            TeacherManager.addTeacher(value);
+            TecherManger.addTecher(value);
         }
         [Route("api/updateTeacher")]
-        // PUT: api/Teacher/5
+        // PUT: api/Techer/5
         public void Put([FromBody]common.Teacher teacher)
         {
-            TeacherManager.Update(teacher);
+            TecherManger.Update(teacher);
         }
 
-        // DELETE: api/Teacher/5
+        // DELETE: api/Techer/5
         [Route("api/removeTeacher/{id}")]
         public void Delete([FromUri]int id)
         {
-            TeacherManager.remove(id);
+            TecherManger.remove(id);
         }
     }
 }

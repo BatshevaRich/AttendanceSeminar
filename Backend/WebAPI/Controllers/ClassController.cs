@@ -16,7 +16,7 @@ namespace myApi.Controllers
         [Route("api/getAllClasses")]
         public List<Class1>  Get()
         {
-            return ManagerClasses.getList(); 
+            return ManegerClasses.getList(); 
         }
 
         // GET: api/Class/5
@@ -29,7 +29,7 @@ namespace myApi.Controllers
         [Route("api/addClass")]
         public void Post([FromBody]Class1 value)
         {
-            ManagerClasses.addClass(value);
+            ManegerClasses.addClass(value);
         }
 
         // PUT: api/Class/5
@@ -41,7 +41,7 @@ namespace myApi.Controllers
         [Route("api/removeClass/{id}")]
         public void Delete([FromUri]int id)
         {
-            ManagerClasses.remove(id);
+            ManegerClasses.remove(id);
         }
     }
 }

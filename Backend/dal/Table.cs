@@ -15,12 +15,12 @@ namespace dal
     public partial class Table
     {
         public int codePresence { get; set; }
-        public int codeTeacher { get; set; }
+        public int codeTecher { get; set; }
         public Nullable<System.DateTime> dateDay { get; set; }
         public Nullable<int> mis_Hour { get; set; }
         public Nullable<int> statusToDay { get; set; }
     
         public virtual statusN statusN { get; set; }
-        public virtual Teacher Teacher { get; set; }
+        public virtual techer techer { get; set; }
     }
 }

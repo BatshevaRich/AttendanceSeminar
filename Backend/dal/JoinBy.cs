@@ -15,12 +15,12 @@ namespace dal
             get { return schedule; }
             set { schedule = value; }
         }
-        private Teacher teacher;
+        private techer techer;
 
-        public Teacher Teacher
+        public techer Techer
         {
-            get { return Teacher; }
-            set { Teacher = value; }
+            get { return techer; }
+            set { techer = value; }
         }
         private @class @class;
 

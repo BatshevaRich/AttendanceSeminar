@@ -7,7 +7,7 @@ namespace dal
 {
     public partial class Presence
     {
-        public static List<int> getInfoForResponce(Teacher t)
+        public static List<int> getInfoForResponce(techer t)
         {
             DateTime? dateTime;
             int numHouerForTeacherPresence=0;
@@ -19,7 +19,7 @@ namespace dal
             using (sqlEntities sqlEntities = new sqlEntities())
             {try
                 {
-                    var x = sqlEntities.Presence.ToList().Where(z => z.Teacher.codeTeacher == t.codeTeacher).ToList();
+                    var x = sqlEntities.Presence.ToList().Where(z => z.techer.codeTecher == t.codeTecher).ToList();
 
                     //לא נותן ברשימות נוכחות ריקות מה עושים?
                     x.OrderBy(o => o.dateDay);
@@ -90,7 +90,7 @@ namespace dal
                 Presence presence = new Presence()
                 {
 
-                    codeTeacher=item.Teacher,
+                    codeTecher=item.techer,
                     day=i,
                     mis_Hour=item.hour_in_dey,
                     statusToDay=3,
@@ -104,7 +104,7 @@ namespace dal
         {
             using (sqlEntities sqlEntities = new sqlEntities())
             {
-                var s = sqlEntities.Presence.Where(z => z.codeTeacher == code && z.dateDay == date && z.mis_Hour == hour).First();
+                var s = sqlEntities.Presence.Where(z => z.codeTecher == code && z.dateDay == date && z.mis_Hour == hour).First();
                 try
                 {
                     sqlEntities.Presence.Remove(s);
@@ -123,11 +123,11 @@ namespace dal
         {
             using (sqlEntities sqlEntities = new sqlEntities())
             {
-                var s = sqlEntities.Presence.Where(z => z.codeTeacher == code && z.dateDay == date && z.mis_Hour == hour).First();
+                var s = sqlEntities.Presence.Where(z => z.codeTecher == code && z.dateDay == date && z.mis_Hour == hour).First();
                 try
                 {
                     s.statusToDay = statusToDay;
-                    s.codeTeacher = codeTachar;
+                    s.codeTecher = codeTachar;
                 }
                 catch (NullReferenceException)
                 {
@@ -146,7 +146,7 @@ namespace dal
             using (sqlEntities sqlEntities = new sqlEntities())
             {
                 var listMain = sqlEntities.Presence.Where(x => x.dateDay.Value.Month == month).ToList();
-                var listOrderTacher = listMain.OrderBy(x => x.Teacher).ToList();
+                var listOrderTacher = listMain.OrderBy(x => x.techer).ToList();
             }
         }
 

@@ -36,12 +36,12 @@ namespace common
             get { return statusToDay; }
             set { statusToDay = value; }
         }
-        private int  codeTeacher;
+        private int  codeTecher;
 
-        public int  CodeTeacher
+        public int  CodeTecher
         {
-            get { return  codeTeacher; }
-            set {  codeTeacher = value; }
+            get { return  codeTecher; }
+            set {  codeTecher = value; }
         }
         private int day;
 

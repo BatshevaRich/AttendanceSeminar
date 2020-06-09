@@ -15,13 +15,13 @@ namespace dal
     public partial class Presence
     {
         public int codePresence { get; set; }
-        public Nullable<int> codeTeacher { get; set; }
+        public Nullable<int> codeTecher { get; set; }
         public Nullable<System.DateTime> dateDay { get; set; }
         public Nullable<int> mis_Hour { get; set; }
         public Nullable<int> statusToDay { get; set; }
         public Nullable<int> day { get; set; }
     
         public virtual statusN statusN { get; set; }
-        public virtual Teacher Teacher { get; set; }
+        public virtual techer techer { get; set; }
     }
 }

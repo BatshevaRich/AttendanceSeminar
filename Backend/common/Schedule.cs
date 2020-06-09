@@ -44,12 +44,12 @@ namespace common
             get { return subjectIn; }
             set { subjectIn = value; }
         }
-        private int? teacher;
+        private int? techer;
 
-        public int? Teacher
+        public int? Techer
         {
-            get { return Teacher; }
-            set { Teacher = value; }
+            get { return techer; }
+            set { techer = value; }
         }
         public bool? su;
         public bool? Su

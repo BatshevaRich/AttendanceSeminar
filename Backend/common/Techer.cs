@@ -8,12 +8,12 @@ namespace common
 {
     public class Teacher
     {
-        private int codeTeacher;
+        private int codeTecher;
 
         public int CodeTeacher
         {
-            get { return codeTeacher; }
-            set { codeTeacher = value; }
+            get { return codeTecher; }
+            set { codeTecher = value; }
         }
         private string name;
         public string Name

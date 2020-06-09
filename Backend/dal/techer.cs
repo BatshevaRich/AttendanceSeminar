@@ -12,17 +12,17 @@ namespace dal
     using System;
     using System.Collections.Generic;
     
-    public partial class Teacher
+    public partial class techer
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Teacher()
+        public techer()
         {
             this.Presence = new HashSet<Presence>();
             this.Table = new HashSet<Table>();
             this.schedules = new HashSet<schedule>();
         }
     
-        public int codeTeacher { get; set; }
+        public int codeTecher { get; set; }
         public string name { get; set; }
         public Nullable<bool> permanent { get; set; }
         public Nullable<int> hour_teken_month { get; set; }

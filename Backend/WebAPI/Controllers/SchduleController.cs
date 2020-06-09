@@ -16,7 +16,7 @@ namespace myApi.Controllers
        [ Route("api/getAllSchedules")]
         public List<Schedule> Get()
         {
-        return  ManagerSchedule.GetSchedules();
+        return  MangerSchedule.GetSchedules();
              
         }
 
@@ -29,7 +29,7 @@ namespace myApi.Controllers
         // POST: api/Schdule
         public void Post([FromBody]Schedule s)
         {
-            ManagerSchedule.add(s);
+            MangerSchedule.add(s);
         }
 
         // PUT: api/Schdule/5

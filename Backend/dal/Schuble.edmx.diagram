@@ -8,7 +8,7 @@
         <EntityTypeShape EntityType="sqlModel.class" Width="1.5" PointX="3.5" PointY="3.5" />
         <EntityTypeShape EntityType="sqlModel.Presence" Width="1.5" PointX="8.625" PointY="1.625" />
         <EntityTypeShape EntityType="sqlModel.subjectToClass" Width="1.5" PointX="5.75" PointY="3.5" />
-        <EntityTypeShape EntityType="sqlModel.Teacher" Width="1.5" PointX="4.25" PointY="0.75" />
+        <EntityTypeShape EntityType="sqlModel.techer" Width="1.5" PointX="4.25" PointY="0.75" />
         <AssociationConnector Association="sqlModel.FK_Table_ToTable" />
         <EntityTypeShape EntityType="sqlModel.statusN" Width="1.5" PointX="0.75" PointY="0.875" />
         <AssociationConnector Association="sqlModel.FK__Presence__status__4E53A1AA" />
@@ -18,7 +18,7 @@
         <EntityTypeShape EntityType="sqlModel.schedule" Width="1.5" PointX="11" PointY="1.625" />
         <AssociationConnector Association="sqlModel.FK__schedule__class__0F624AF8" />
         <AssociationConnector Association="sqlModel.FK__schedule__subjec__1B9317B3" />
-        <AssociationConnector Association="sqlModel.FK__schedule__Teacher__0E6E26BF" />
+        <AssociationConnector Association="sqlModel.FK__schedule__techer__0E6E26BF" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
