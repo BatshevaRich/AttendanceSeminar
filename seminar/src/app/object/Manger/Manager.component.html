@@ -1,0 +1,12 @@
+<form dir="rtl">
+    <br>
+    <div class="form-group" dir="rtl">
+        <div class="custom-file">
+            <input type="file" class="custom-file-input" id="validatedCustomFile" required #fileInput
+                (change)="incomingfile($event)" placeholder="Upload file" accept=".xlsx">
+            <label class="custom-file-label" for="validatedCustomFile">בחרי קובץ לטעינה</label>
+        </div>
+    </div>
+    <br>
+    <button type="button" class="btn btn-primary" (click)="Upload($event)" [disabled]="!fileInput.value">Upload</button>
+</form>

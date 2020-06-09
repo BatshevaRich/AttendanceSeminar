@@ -20,7 +20,7 @@ import { ShowPresenceBySubjectComponent } from '../app/show-presenceBySubject/sh
 import {ShowPresenceByTeacherComponent} from '../app/show-presenceByTeacher/show-presenceT.component';
 import { DayComponent } from '../app/day/day.component';
 import { Component } from '@angular/core';
-import { ManagerComponent } from 'src/app/Manger/Manager.component';
+import { ManagerComponent } from 'src/app/object/Manger/Manager.component';
 import { ShortenPipe } from 'src/app/pipes/short.pipe';
 import { SubjectSevice } from 'src/app/service/SubjectService.service';
 import {CalendarModule} from 'primeng/calendar';

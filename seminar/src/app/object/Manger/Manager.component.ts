@@ -6,49 +6,51 @@ import { SubjectComponent } from 'src/app/subject/subject.component';
 import * as XLSX from 'xlsx';
 //import * as Excel from 'exceljs/dist/exceljs.min.js';
 //import { element } from 'protractor';
-import { schduleSevice } from '../service/schduleService.service';
-import { ClassSevice } from '../service/ClassSevice.service';
-import { SubjectSevice } from '../service/SubjectService.service';
-import { teacherService } from '../service/serviceTeacher.service';
-import { Class } from '../classes/class';
-import { Schedule } from '../classes/Schedule';
-import { subject } from '../classes/subject';
-import { Teacher } from '../classes/Techer';
-import { ScheduleR } from '../classes/ScheduleR';
-import { SA } from '../classes/SA';
+import { schduleSevice } from '../../service/schduleService.service';
+import { ClassSevice } from '../../service/ClassSevice.service';
+import { SubjectSevice } from '../../service/SubjectService.service';
+import { teacherService } from '../../service/serviceTeacher.service';
+import { Class } from '../../classes/class';
+import { Schedule } from '../../classes/Schedule';
+import { subject } from '../../classes/subject';
+import { Teacher } from '../../classes/Techer';
+import { ScheduleR } from '../../classes/ScheduleR';
+import { SA } from '../../classes/SA';
 
 
 
 @Component({
-  selector: 'app-Manager',
+  selector: 'app-manager',
   templateUrl: './Manager.component.html',
   styleUrls: ['./Manager.component.css']
 })
 export class ManagerComponent implements OnInit {
-  hourEnd: number = 8;
+  hourEnd = 8;
   arrayBuffer: any;
   file: File;
-  classesList: Array<Class> = []
-  subjects: Array<subject> = []
-  teachers: Array<Teacher> = []
+  classesList: Array<Class> = [];
+  subjects: Array<subject> = [];
+  teachers: Array<Teacher> = [];
+
   constructor(
     public server1: schduleSevice,
     public serviceClass: ClassSevice,
-    public serviceSubject: SubjectSevice, public serviceTeacher: teacherService) {
+    public serviceSubject: SubjectSevice,
+    public serviceTeacher: teacherService) {
 
   }
 
   ngOnInit() {
-    this.serviceClass.getAllClass().subscribe(d => { this.classesList = d; })
-    this.serviceSubject.getAllSubject().subscribe(d => { this.subjects = d; })
-    this.serviceTeacher.GetAllTeacher().subscribe(d => { this.teachers = d; })
+    this.serviceClass.getAllClass().subscribe(d => {debugger; this.classesList = d; });
+    this.serviceSubject.getAllSubject().subscribe(d => {debugger; this.subjects = d; });
+    this.serviceTeacher.GetAllTeacher().subscribe(d => {debugger; this.teachers = d; });
   }
   incomingfile(event) {
     this.file = event.target.files[0];
   }
 
   Upload(event) {
-
+debugger;
     let fileReader = new FileReader();
     fileReader.onload = (e) => {
       this.arrayBuffer = fileReader.result;
@@ -148,46 +150,12 @@ export class ManagerComponent implements OnInit {
                 if (sub!= undefined) 
              { if (sub.groups == true) var s = new SA(h, clas.CodeClass, day, sub.CodeSubject, teach.CodeTeacher, true)
               else var s = new SA(h, clas.CodeClass, day, sub.CodeSubject, teach.CodeTeacher,false)
-
-
-              //}
               this.server1.AddSchdule(s);}
             });
-
-
-
           }
         }
        while (index++ < c.length - 1)
     }
 
   }
-
-  //   for (let index = 1; index <= this.hourEnd; index++)
-  //  {
-  //    for (let index1 = 0; index1 < element.length; index1++) {
-  //     //var c= result6.indexOf(",");
-
-  //     //subject=result6.
-  //   // 
-
-
-  //      var c= result6.indexOf(index);
-  //    }
-  //   }
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
