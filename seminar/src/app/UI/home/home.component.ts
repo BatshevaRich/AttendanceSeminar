@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { schduleSevice } from '../service/schduleService.service';
-import { ScheduleR } from '../classes/ScheduleR';
+import { schduleSevice } from '../../service/schduleService.service';
+import { ScheduleR } from '../../classes/ScheduleR';
 
 @Component({
   selector: 'app-home',

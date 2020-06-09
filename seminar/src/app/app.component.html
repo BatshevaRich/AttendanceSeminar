@@ -1,14 +1,18 @@
-<h1> less mess</h1>
+<div id="wrapper">
+<main dir="rtl">
+    <div>
+        <app-header></app-header>
+        <section class="main">
+            <div class="main-container">
+                <router-outlet></router-outlet>
+            </div>
+        </section>
+        <br>
+        <br>
 
-<button routerLink="/Home" routerLinkActive="activeLink" class="btn btn-outline-secondary">home</button>
- <button routerLink="/Manger" routerLinkActive="activeLink" class="btn btn-outline-primary">Manager</button> 
-<button routerLink="/Presence" routerLinkActive="activeLink" class="btn btn-outline-success">Presence</button>
-
-<button routerLink="/schedule"  routerLinkActive="activeLink" class="btn btn-outline-primary">Schedule</button>
-
-<button routerLink="/Report"  routerLinkActive="activeLink" class="btn btn-outline-warning">Report</button>
-<button routerLink="/Teacher" routerLinkActive="activeLink" class="btn btn-outline-primary">Teacher</button>
-<button routerLink="/Class"  routerLinkActive="activeLink"class="btn btn-outline-success">Class</button>
-<button routerLink="/Subject"  routerLinkActive="activeLink" class="btn btn-outline-info">Subject</button>
-<router-outlet></router-outlet> 
-
+    </div>
+</main>
+</div>
+<div>
+    <app-footer></app-footer>
+</div>
