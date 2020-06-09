@@ -7,7 +7,7 @@ import { ClassComponent } from 'src/app/class/class.component';
 import { ClassSevice } from 'src/app/service/ClassSevice.service';
 //import { tick } from '@angular/core';
 import { SubjectSevice } from 'src/app/service/SubjectService.service';
-import { teacherService } from 'src/app/service/serviceTeacher.service';
+import { TeacherService } from 'src/app/service/serviceTeacher.service';
 import { schduleSevice } from 'src/app/service/schduleService.service';
 import { ScheduleR } from 'src/app/classes/ScheduleR';
 import * as XLSX from 'xlsx';
@@ -42,8 +42,7 @@ export class ScheduleComponent implements OnInit {
   constructor(
     private server: schduleSevice,
     public serviceClass: ClassSevice,
-    public serviceSubject: SubjectSevice, public serviceTeacher: teacherService) 
-  {
+    public serviceSubject: SubjectSevice, public serviceTeacher: TeacherService) {
   }
 
 

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Teacher } from 'src/app/classes/Techer';
 import { Dictionary } from 'src/app/classes/Dictionary';
-import { ServicePresence } from 'src/app/service/presenceService.service';
-import { teacherService } from 'src/app/service/serviceTeacher.service';
+import { PresenceService } from 'src/app/service/presenceService.service';
+import { TeacherService } from 'src/app/service/serviceTeacher.service';
 //import * as jspdf from 'jspdf';  
 //import html2canvas from 'html2canvas'; 
 @Component({
@@ -14,7 +14,7 @@ export class ReportComponent implements OnInit {
   
 dictionary:Dictionary[]
   teachers:Teacher[]
-  constructor(public service:ServicePresence,public servicet:teacherService)
+  constructor(public service:PresenceService,public servicet:TeacherService)
    { this.getAllTeachers();
           
    }

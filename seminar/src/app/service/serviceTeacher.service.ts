@@ -10,7 +10,7 @@ import { baseURL } from '../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class teacherService {
+export class TeacherService {
   constructor(public http: HttpClient) { }
 
   GetAllTeacher(): Observable<Teacher[]> {

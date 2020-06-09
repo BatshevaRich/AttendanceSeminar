@@ -5,7 +5,7 @@ import {Teacher} from"../classes/Techer"
 import { fail } from 'assert';
 import { ElementRef } from '@angular/core';
 import { ViewChild } from '@angular/core';
-import { teacherService } from 'src/app/service/serviceTeacher.service';
+import { TeacherService } from 'src/app/service/serviceTeacher.service';
 @Component({
   selector: 'app-techer',
   templateUrl: './techer.component.html',
@@ -13,7 +13,7 @@ import { teacherService } from 'src/app/service/serviceTeacher.service';
 })
 export class TecherComponent implements OnInit {
 // public add: Service
-  constructor(public service:teacherService) 
+  constructor(public service:TeacherService) 
   {
     this.techar = new Teacher();
     

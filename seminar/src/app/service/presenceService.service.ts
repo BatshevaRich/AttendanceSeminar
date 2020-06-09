@@ -9,7 +9,7 @@ import { baseURL } from '../../environments/environment';
 ({
     providedIn: 'root'
 })
-  export class ServicePresence {
+  export class PresenceService {
 
     constructor(public http: HttpClient) {}
    setPresences(presence: addPresence) {
