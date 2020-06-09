@@ -9,16 +9,16 @@
             <div class="input-group-append">
               <span class="input-group-text" id="name">שם: </span>
             </div>
-            <input [(ngModel)]="subject.Name" name="name" type="text" class="form-control" id="name"
-              aria-describedby="name">
+            <input [(ngModel)]="subject.Name" name="name" type="text" class="form-control"
+              id="name" aria-describedby="name"  required>
           </div>
           <div class="input-group mb-3">
             <div class="input-group-append">
               <span class="input-group-text" id="groups">קבוצה? </span>
             </div>
             <input style="outline: none; -webkit-box-shadow: none;
-            box-shadow: none;" input type="checkbox" [ngModel]="subject.groups" [ngModelOptions]="{standalone: true}"
-              (change)="subject.groups = !subject.groups" name="groups" class="form-control" id="groups">
+            box-shadow: none;" type="checkbox" [ngModel]="subject.groups" [ngModelOptions]="{standalone: true}"
+              (change)="subject.groups = !subject.groups" name="groups" class="form-control text-right" id="groups">
           </div>
           <div class="input-group mb-3">
             <div class="input-group-append">
@@ -34,9 +34,6 @@
             <input [(ngModel)]="subject.Group2" name="group2" type="text" [readOnly]="!subject.groups"
               class="form-control" id="group2" aria-describedby="group2">
           </div>
-          <div *ngIf="signupForm.invalid">
-            the form is invalid,please insert ...
-          </div>
           <button type="submit" [disabled]="signupForm.invalid" class="btn btn-primary">הוספה</button>
         </form>
       </div>
@@ -51,9 +48,9 @@
           <li class="list-group-item">
             <div class="container">
               <div class="row">
-                <div class="col card-header">
+                <li class="col card-title list-group-item">
                   {{n.Name}}
-                </div>
+                </li>
                 <div class="col">
                   <button type="button" class="btn btn-danger btn-block" (click)="Delete(n)">למחיקה</button>
                 </div>
