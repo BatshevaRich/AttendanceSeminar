@@ -30,7 +30,13 @@
     </div>
   </div>
   <div class="col-sm-8">
-    <div class="card shadow-sm p-3 mb-5 bg-white rounded">
+    <div class="d-flex justify-content-center" *ngIf="subjectList.length == 0">
+      <div class="spinner-border text-primary" role="status"
+        style="width: 10rem; height: 10rem;">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+    <div *ngIf="subjectList.length > 0" class="card shadow-sm p-3 mb-5 bg-white rounded">
       <form>
         <div class="card-header">
           <h2 dir="rtl" class="text-center">כל המקצועות</h2>

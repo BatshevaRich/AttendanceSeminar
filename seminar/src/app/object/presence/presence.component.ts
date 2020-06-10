@@ -124,7 +124,7 @@ export class PresenceComponent implements OnInit {
       });
     });
     this.hours = [1, 2, 3, 4, 5, 6, 7, 8];
-    this.days = [1, 2, 3, 4, 5, 6,];
+    this.days = [1, 2, 3, 4, 5, 6];
   }
 
   ngOnInit() {
