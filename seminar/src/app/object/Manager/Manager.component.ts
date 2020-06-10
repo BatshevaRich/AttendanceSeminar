@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { TecherComponent } from 'src/app/techer/techer.component';
-import { ClassComponent } from 'src/app/class/class.component';
-import { SubjectComponent } from 'src/app/subject/subject.component';
+import { TeacherComponent } from 'src/app/object/teacher/teacher.component';
+import { ClassComponent } from 'src/app/object/class/class.component';
+import { SubjectComponent } from 'src/app/object/subject/subject.component';
 //import { Routes } from '@angular/router';
 import * as XLSX from 'xlsx';
 //import * as Excel from 'exceljs/dist/exceljs.min.js';
@@ -9,11 +9,11 @@ import * as XLSX from 'xlsx';
 import { schduleSevice } from '../../service/schduleService.service';
 import { ClassSevice } from '../../service/ClassSevice.service';
 import { SubjectSevice } from '../../service/SubjectService.service';
-import { teacherService } from '../../service/serviceTeacher.service';
+import { TeacherService } from '../../service/serviceTeacher.service';
 import { Class } from '../../classes/class';
 import { Schedule } from '../../classes/Schedule';
 import { subject } from '../../classes/subject';
-import { Teacher } from '../../classes/Techer';
+import { Teacher } from '../../classes/Teacher';
 import { ScheduleR } from '../../classes/ScheduleR';
 import { SA } from '../../classes/SA';
 
@@ -36,7 +36,7 @@ export class ManagerComponent implements OnInit {
     public server1: schduleSevice,
     public serviceClass: ClassSevice,
     public serviceSubject: SubjectSevice,
-    public serviceTeacher: teacherService) {
+    public serviceTeacher: TeacherService) {
 
   }
 
