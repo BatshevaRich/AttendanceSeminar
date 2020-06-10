@@ -9,7 +9,7 @@ import { ScheduleComponent } from '../app/schedule/schedule.component';
 import { TecherComponent } from './object/techer/techer.component';
 import { HomeComponent } from './UI/home/home.component';
 import { ClassComponent } from '../app/object/class/class.component';
-import { ReportComponent } from 'src/app/report/report.component';
+import { ReportComponent } from 'src/app/object/report/report.component';
 import { SubjectComponent } from 'src/app/object/subject/subject.component';
 import { FilterPipe } from 'src/app/pipes/filter.pipe';
 import { BrowserModule } from '@angular/platform-browser';

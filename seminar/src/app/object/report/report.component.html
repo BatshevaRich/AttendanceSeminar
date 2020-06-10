@@ -1,0 +1,26 @@
+<div class="card shadow-sm p-3 mb-5 bg-white rounded">
+    <button *ngIf="dictionary.length > 0" class="btn btn-success"
+        (click)="createPdf()">הורדה ל-PDF</button>
+        <br>
+    <table id="contentToConvert" class="table text-right" dir="rtl">
+        <thead>
+            <th></th>
+            <th scope="col">ת"ז&nbsp;מורה</th>
+            <th scope="col">שם&nbsp;מורה</th>
+            <th scope="col">שעות&nbsp;עבודה</th>
+            <th scope="col">שעות&nbsp;מחלה</th>
+            <th scope="col">ימי&nbsp;עבודה</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let t of dictionary; let i=index">
+                <td>{{i+1}}</td>
+                <td>{{t.Teacher.CodeTeacher}}</td>
+                <td>{{t.Teacher.Name}}</td>
+                <td>{{t.Arr[0]}}</td>
+                <td>{{t.Arr[1]}}</td>
+                <td>{{t.Arr[2]}}</td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>
