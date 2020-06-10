@@ -23,8 +23,16 @@ namespace dal
 
                     //לא נותן ברשימות נוכחות ריקות מה עושים?
                     x.OrderBy(o => o.dateDay);
-                    
+                    try
+                    {
                         dateTime = x.FirstOrDefault().dateDay;
+                    }
+                    catch (Exception)
+                    {
+                        dateTime = new DateTime();
+                        
+                    }
+                        
 
 
 
