@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { PresenceComponent } from './object/presence/presence.component';
-import { ScheduleComponent } from '../app/schedule/schedule.component';
+import { ScheduleComponent } from './object/schedule/schedule.component';
 import { TeacherComponent } from './object/teacher/teacher.component';
 import { HomeComponent } from './UI/home/home.component';
 import { ClassComponent } from '../app/object/class/class.component';

@@ -5,7 +5,6 @@ import { subject } from 'src/app/classes/subject';
 import { Teacher } from 'src/app/classes/Teacher';
 import { ClassComponent } from 'src/app/object/class/class.component';
 import { ClassSevice } from 'src/app/service/ClassSevice.service';
-//import { tick } from '@angular/core';
 import { SubjectSevice } from 'src/app/service/SubjectService.service';
 import { TeacherService } from 'src/app/service/serviceTeacher.service';
 import { schduleSevice } from 'src/app/service/schduleService.service';
@@ -20,14 +19,14 @@ export class ScheduleComponent implements OnInit {
   schedule1: Schedule;
   days: number[] = [1, 2, 3, 4, 5, 6];
   hours: number[] = [1, 2, 3, 4, 5, 6, 7, 8];
-  subjects: Array<subject> = []
-  subjectsListFilter: Array<subject> = []
-  classesList: Array<Class> = []
-  classesListFilter: Array<Class> = []
-  listScheduler: Array<ScheduleR> = []
-  listSchedule: Array<Schedule> = []
-  teacherListFilter: Array<Teacher> = []
-  teacherList: Array<Teacher> = []
+  subjects: Array<subject> = [];
+  subjectsListFilter: Array<subject> = [];
+  classesList: Array<Class> = [];
+  classesListFilter: Array<Class> = [];
+  listScheduler: Array<ScheduleR> = [];
+  listSchedule: Array<Schedule> = [];
+  teacherListFilter: Array<Teacher> = [];
+  teacherList: Array<Teacher> = [];
   searchObj: Schedule;
   subjectFilter: any;
   classFilter: any;
@@ -52,12 +51,12 @@ export class ScheduleComponent implements OnInit {
       this.classesList = res;
       this.classesListFilter = this.classesList;
     }
-    )
+    );
   }
   ngOnInit() {
-    this.classFilter = "כל הכיתות"
-    this.teacherFilter = "כל המורות"
-    this.subjectFilter = "כל המקצועות"
+    this.classFilter = 'כל הכיתות';
+    this.teacherFilter = 'כל המורות';
+    this.subjectFilter = 'כל המקצועות';
     this.server.getSchedule().subscribe((res) => {
       this.listScheduler = res;
       this.serviceClass.getAllClass().subscribe((res) => {
@@ -74,91 +73,86 @@ export class ScheduleComponent implements OnInit {
               let element = this.listScheduler[index];
               this.schedule1 = new Schedule();
               this.schedule1.Hour_in_dey = element.Hour_in_dey;
-              this.schedule1.Day = element.Day
+              this.schedule1.Day = element.Day;
               this.teacherList.forEach(el => {
-                if (<number>element.Teacher == el.CodeTeacher) {
+                if (<number>element.Teacher === el.CodeTeacher) {
                   this.schedule1.teacher = el;
                   return;
                 }
               }
-              )
+              );
 
               this.classesList.forEach
                 (el => {
-                  if (element.Clss == el.CodeClass) {
+                  if (element.Clss === el.CodeClass) {
                     this.schedule1.Clss = el;
                     return;
                   }
-                })
+                });
 
               this.subjects.forEach
                 (el => {
-                  if (element.SubjectIn == el.CodeSubject) {
+                  if (element.SubjectIn === el.CodeSubject) {
                     this.schedule1.SubjectIn = el;
                     return;
                   }
-                })
+                });
               this.listSchedule.push(this.schedule1);
             }
 
-          })
-        })
-      })
+          });
+        });
+      });
     });
-    this.classesListFilter = this.classesList
+    this.classesListFilter = this.classesList;
   }
 
   getS(day: number, hour: number, teacher: Teacher, subject: subject, clas: Class) {
     let l: Schedule;
     l = this.listSchedule.filter(
-      item => item.Day == day && item.Hour_in_dey == hour
-        && item.Clss.CodeClass == clas.CodeClass
-        && item.teacher.CodeTeacher == teacher.CodeTeacher
-        && item.SubjectIn.CodeSubject == subject.CodeSubject
+      item => item.Day === day && item.Hour_in_dey === hour
+        && item.Clss.CodeClass === clas.CodeClass
+        && item.teacher.CodeTeacher === teacher.CodeTeacher
+        && item.SubjectIn.CodeSubject === subject.CodeSubject
     )[0];
 
-    if (l == undefined)
+    if (l === undefined) {
       l = new Schedule(hour, clas, day, subject, teacher);
+    }
 
     return l;
   }
   search() {
-
-    //איך עושים את הסינון
-    if (this.classFilter != "כל הכיתות") {
+    // איך עושים את הסינון
+    if (this.classFilter !== 'כל הכיתות') {
       this.classesListFilter = this.classesList.filter(
-        //לסנן רק אם לא בחור "כל הכיתות
-        item => item.CodeClass == this.classFilter.CodeClass//לבדוק איך מקבלים את הערך שנבחר בדדל
+        // לסנן רק אם לא בחור "כל הכיתות
+        item => item.CodeClass === this.classFilter.CodeClass// לבדוק איך מקבלים את הערך שנבחר בדדל
       );
-
-    } else { this.classesListFilter = this.classesList }
-
-    if (this.teacherFilter != "כל המורות") {
-
+    } else { this.classesListFilter = this.classesList; }
+    if (this.teacherFilter !== 'כל המורות') {
       this.teacherListFilter = this.teacherList.filter(
-
-        item => item.CodeTeacher == this.teacherFilter.CodeTeacher//לבדוק איך מקבלים את הערך שנבחר בדדל
+        item => item.CodeTeacher === this.teacherFilter.CodeTeacher// לבדוק איך מקבלים את הערך שנבחר בדדל
       );
-    } else { this.teacherListFilter = this.teacherList }
-    if (this.subjectFilter != "כל המקצועות") {
+    } else { this.teacherListFilter = this.teacherList; }
+    if (this.subjectFilter !== 'כל המקצועות') {
       this.subjectsListFilter = this.subjects.filter(
-        item => item.CodeSubject == this.subjectFilter.CodeSubject//לבדוק איך מקבלים את הערך שנבחר בדדל
+        item => item.CodeSubject === this.subjectFilter.CodeSubject// לבדוק איך מקבלים את הערך שנבחר בדדל
       );
-    } else { this.subjectsListFilter = this.subjects }
-
-
+    } else { this.subjectsListFilter = this.subjects; }
   }
 
 
-  //כך הדרך הנכונה לסנן???????????????
+  // כך הדרך הנכונה לסנן???????????????
   getScheduleClass(day: number, hour: number, c: Class) {
     let l: Schedule;
     l = this.listSchedule.filter(
-      item => item.Day == day && item.Hour_in_dey == hour && item.Clss.CodeClass == c.CodeClass
+      item => item.Day === day && item.Hour_in_dey === hour && item.Clss.CodeClass === c.CodeClass
     )[0];
 
-    if (l == undefined)
+    if (l === undefined) {
       l = new Schedule(hour, c, day, new subject(), new Teacher());
+    }
 
 
     return l;
@@ -166,11 +160,12 @@ export class ScheduleComponent implements OnInit {
   getScheduleT(day: number, hour: number, c: Teacher) {
     let l: Schedule;
     l = this.listSchedule.filter(
-      item => item.Hour_in_dey == hour && item.Day == day && item.teacher.CodeTeacher == c.CodeTeacher
+      item => item.Hour_in_dey === hour && item.Day === day && item.teacher.CodeTeacher === c.CodeTeacher
     )[0];
 
-    if (l == undefined)
+    if (l === undefined) {
       l = new Schedule(hour, new Class(), day, new subject(), c);
+    }
 
 
     return l;
@@ -178,11 +173,12 @@ export class ScheduleComponent implements OnInit {
   getScheduleSubject(day: number, hour: number, c: subject) {
     let l: Schedule;
     l = this.listSchedule.filter(
-      item => item.Day == day && item.Hour_in_dey == hour && item.SubjectIn.CodeSubject == c.CodeSubject
+      item => item.Day === day && item.Hour_in_dey === hour && item.SubjectIn.CodeSubject === c.CodeSubject
     )[0];
 
-    if (l == undefined)
+    if (l === undefined) {
       l = new Schedule(hour, new Class(), day, c, new Teacher());
+    }
 
 
     return l;

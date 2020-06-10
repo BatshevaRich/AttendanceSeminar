@@ -1,0 +1,142 @@
+<div class="row text-right">
+  <div class="col-sm-6">
+    <div class="card shadow-sm p-3 mb-5 bg-white rounded">
+      <div class="card-body">
+        <h2 class="card-title">מערכת</h2>
+
+        <div>
+          <h4>חפש לפי:</h4>
+          <div class="input-group mb-3">
+            <div class="input-group-append">
+              <label class="input-group-text" for="chooseclass">כיתה</label>
+            </div>
+            <select class="custom-select" id="chooseclass" [(ngModel)]="classFilter">
+              <option selected>כל הכיתות</option>
+              <option *ngFor="let c of classesList" [ngValue]="c">{{c.Name}}</option>
+            </select>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-append">
+              <label class="input-group-text" for="choosesubject">מקצוע</label>
+            </div>
+            <select class="custom-select" id="choosesubject" [(ngModel)]="subjectFilter">
+              <option selected>כל המקצועות</option>
+              <option *ngFor="let s of subjects" [ngValue]="s">{{s.Name}}</option>
+            </select>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-append">
+              <label class="input-group-text" for="chooseteacher">מורה</label>
+            </div>
+            <select class="custom-select" id="chooseteacher" [(ngModel)]="teacherFilter" (click)="gatAllClass()">
+              <option selected>כל המורות</option>
+              <option *ngFor="let t of teacherList" [ngValue]="t">{{t.Name}}</option>
+            </select>
+          </div>
+          <!-- <button class="btn btn-primary" (click)="search()">סינון</button>&nbsp; -->
+          <div class="btn-group btn-group-toggle" dir="ltr" data-toggle="buttons">
+            <label class="btn btn-secondary">
+              <input type="radio" name="options" id="classes" autocomplete="off" (click)="showByClasses()"> סינון לפי
+              כיתות
+            </label>
+            <label class="btn btn-secondary">
+              <input type="radio" name="options" id="teachers" autocomplete="off" (click)="showByTeachers()"> סינון לפי
+              מורות
+            </label>
+            <label class="btn btn-secondary">
+              <input type="radio" name="options" id="subjects" autocomplete="off" (click)="showBySubjects()"> סינון לפי
+              מקצועות
+            </label>
+            <label class="btn btn-primary">
+              <input type="radio" name="options" id="search" autocomplete="off" (click)="search()">סינון
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <!-- <div class="d-flex justify-content-center">
+      <div class="spinner-border text-primary" role="status"
+        style="width: 10rem; height: 10rem;">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div> -->
+    <div *ngIf="isShowClasses">
+      <div class="card shadow-sm p-3 mb-5 bg-white rounded" *ngFor="let c of classesListFilter">
+        <b nowrap class="d-flex justify-content-center text-secondary">כיתה: {{c.Name}}</b>
+        <table class="table">
+          <thead>
+            <th>שעה</th>
+            <th>יום ראשון</th>
+            <th> יום שני</th>
+            <th>יום שלישי</th>
+            <th> יום רביעי</th>
+            <th>יום חמישי</th>
+            <th> יום שישי</th>
+          </thead>
+          <tr *ngFor="let h of hours">
+            <td>{{h}}</td>
+            <td *ngFor="let d of days">
+              <app-show-presence [day]="getScheduleClass(d,h,c)"></app-show-presence>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+
+
+    <div *ngIf="isShowTeachers">
+      <div class="card shadow-sm p-3 mb-5 bg-white rounded" *ngFor="let c of teacherListFilter">
+        <b nowrap class="d-flex justify-content-center text-secondary">מורה: {{c.Name}}</b>
+        <table class="table">
+          <thead>
+            <th>שעה</th>
+            <th>יום ראשון</th>
+            <th> יום שני</th>
+            <th>יום שלישי</th>
+            <th> יום רביעי</th>
+            <th>יום חמישי</th>
+            <th> יום שישי</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let h of hours">
+              <td>{{h}}</td>
+              <td *ngFor="let d of days">
+                <app-show-presenceByTeacher [day]="getScheduleT(d,h,c)"></app-show-presenceByTeacher>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div *ngIf="isShowSubjects">
+      <div class="card shadow-sm p-3 mb-5 bg-white rounded" *ngFor="let c of subjectsListFilter">
+        <b nowrap class="d-flex justify-content-center text-secondary">מקצוע: {{c.Name}}</b>
+        <table class="table">
+          <thead>
+            <th>שעה</th>
+            <th>יום ראשון</th>
+            <th> יום שני</th>
+            <th>יום שלישי</th>
+            <th> יום רביעי</th>
+            <th>יום חמישי</th>
+            <th> יום שישי</th>
+          </thead>
+          <tr *ngFor="let h of hours">
+            <td>{{h}}</td>
+            <td *ngFor="let d of days">
+              <app-show-presenceBySubject [day]="getScheduleSubject(d,h,c)"></app-show-presenceBySubject>
+            </td>
+          </tr>
+
+        </table>
+      </div>
+    </div>
+    <!-- <input type="file" style="display: inline-block;" (change)="incomingfile($event)" placeholder="Upload file" accept=".xlsx">
+<button type="button" class="btn btn-info" (click)="Upload()" >Upload</button>
+      -->
+  </div>
+</div>
