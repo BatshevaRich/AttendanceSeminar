@@ -14,7 +14,7 @@ import { SubjectComponent } from 'src/app/object/subject/subject.component';
 import { FilterPipe } from 'src/app/pipes/filter.pipe';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ShowTeacherComponent } from '../app/show-teacher/show-teacher.component';
+import { ShowTeacherComponent } from './show/show-teacher/show-teacher.component';
 import { ShowPresenceComponent } from '../app/show-presence/show-presence.component';
 import { ShowPresenceBySubjectComponent } from '../app/show-presenceBySubject/show-presenceS.component';
 import { ShowPresenceByTeacherComponent } from '../app/show-presenceByTeacher/show-presenceT.component';

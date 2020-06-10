@@ -49,11 +49,13 @@
           <li class="list-group-item">
             <div class="container">
               <div class="row">
-          <li class="col card-title list-group-item">
+          <li class="col card-title">
             <app-show-teacher [showTeacher]="n"></app-show-teacher>
           </li>
           <div class="col">
             <button type="button" class="btn btn-warning btn-block" (click)="update(n)">לעדכון</button>
+          </div>
+          <div class="col">
             <button type="button" class="btn btn-danger btn-block" (click)="Delete(n)">למחיקה</button>
 
           </div>

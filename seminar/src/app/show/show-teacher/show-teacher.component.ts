@@ -10,11 +10,10 @@ import { Input } from '@angular/core';
 export class ShowTeacherComponent implements OnInit {
 
   constructor() { }
-  @Input() showTeacher:Teacher; 
+  @Input() showTeacher: Teacher;
   // @Input() massege:string="לשנות מספר שעות למורה";
-  ngOnInit()
-   {
-     
+  ngOnInit() {
+
   }
 
 }
