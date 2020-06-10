@@ -1,7 +1,11 @@
-<div class="card shadow-sm p-3 mb-5 bg-white rounded">
-    <button *ngIf="dictionary.length > 0" class="btn btn-success"
-        (click)="createPdf()">הורדה ל-PDF</button>
-        <br>
+<div class="d-flex justify-content-center">
+    <div class="spinner-border text-primary" *ngIf="dictionary.length == 0" role="status" style="width: 10rem; height: 10rem;">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
+<div *ngIf="dictionary.length > 0" class="card shadow-sm p-3 mb-5 bg-white rounded">
+    <button *ngIf="dictionary.length > 0" class="btn btn-success" (click)="createPdf()">הורדה ל-PDF</button>
+    <br>
     <table id="contentToConvert" class="table text-right" dir="rtl">
         <thead>
             <th></th>

@@ -19,7 +19,7 @@ export class ClassComponent implements OnInit {
   class: Class;
   search: '';
   color: string;
-  classList: Class[];
+  classList: Class[] = [];
 
    ngOnInit() {
     this.getAllClass();
