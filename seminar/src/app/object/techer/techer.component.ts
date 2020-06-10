@@ -1,6 +1,6 @@
-import { Component, OnInit, Output , EventEmitter} from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import {Teacher} from '../../classes/Techer';
+import { Teacher } from '../../classes/Techer';
 import { fail } from 'assert';
 import { ElementRef } from '@angular/core';
 import { ViewChild } from '@angular/core';
@@ -14,20 +14,20 @@ export class TecherComponent implements OnInit {
   constructor(public service: TeacherService) {
     this.techar = new Teacher();
 
-   }
+  }
 
   names: Teacher[] = [];
   // =[new Teacher(12345,"ruth",true),new Teacher(6789),new Teacher(67890)];
   techar: Teacher;
   showSuccess = false;
-  successMsg = 'הוספת בהצלחה את מורה מספר...' ;
- search: '';
- teacherDel: Teacher = new Teacher();
+  successMsg = 'הוספת בהצלחה את מורה מספר...';
+  search: '';
+  teacherDel: Teacher = new Teacher();
   @ViewChild('divS') divHtml: ElementRef;
- @ViewChild('signupForm') Form: NgForm;
+  @ViewChild('signupForm') Form: NgForm;
 
   ngOnInit() {
-     this.getAllTeachers();
+    this.getAllTeachers();
   }
   private getAllTeachers() {
     this.service.GetAllTeacher().subscribe(data => {
@@ -41,22 +41,23 @@ export class TecherComponent implements OnInit {
   // year: number;
   onSubmitForm() {
 
-     this.service.AddTaecher(this.techar) ;
-     this.Form.reset();
-  // )
-//  (new Techer(this.name, this.teken ,this.year));
+    this.service.AddTaecher(this.techar);
+    this.Form.reset();
+    // )
+    //  (new Techer(this.name, this.teken ,this.year));
   }
   Delete(n) {
-    alert('אם תמחק את המורה ימחקו שעות הלימוד שלה אם ברצונך רק להחליף מורה עדכן פרטי מורה');
-
-    this.service.deleteTeacher(n.CodeTeacher);
-
-    this.getAllTeachers();
+    if (confirm('אם תמחקי את המורה ימחקו שעות הלימוד שלה.\nהאם ברצונך להמשיך במחיקת המורה  ' + n.Name + '?')) {
+      this.service.deleteTeacher(n.CodeTeacher);
+      this.getAllTeachers();
     }
-     update(n) {
+  }
+  update(n) {
+    if (this.techar.Name !== '') {
       n.Name = this.techar.Name;
       n.Hour_teken_month = this.techar.Hour_teken_month;
       n.Permanent = this.techar.Permanent;
       this.service.update(n);
-   }
+    } else { alert('נא למלא פרטים לעדכון!'); }
+  }
 }

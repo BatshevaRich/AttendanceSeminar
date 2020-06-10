@@ -38,8 +38,9 @@ export class ClassComponent implements OnInit {
 
   }
   Delete(n: Class) {
+    if (confirm('האם ברצונך למחוק את הכיתה ' + n.Name + '?')) {
   this.server.removeClass(n.CodeClass);
   this.getAllClass();
-
+    }
   }
 }
