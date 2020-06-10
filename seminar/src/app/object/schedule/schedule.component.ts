@@ -70,12 +70,12 @@ export class ScheduleComponent implements OnInit {
             this.subjects = res;
             this.subjectsListFilter = this.subjects;
             for (let index = 0; index < this.listScheduler.length; index++) {
-              let element = this.listScheduler[index];
+              const element = this.listScheduler[index];
               this.schedule1 = new Schedule();
               this.schedule1.Hour_in_dey = element.Hour_in_dey;
               this.schedule1.Day = element.Day;
               this.teacherList.forEach(el => {
-                if (<number>element.Teacher === el.CodeTeacher) {
+                if (element.Teacher as number === el.CodeTeacher) {
                   this.schedule1.teacher = el;
                   return;
                 }
@@ -107,17 +107,17 @@ export class ScheduleComponent implements OnInit {
     this.classesListFilter = this.classesList;
   }
 
-  getS(day: number, hour: number, teacher: Teacher, subject: subject, clas: Class) {
+  getS(day: number, hour: number, teacher: Teacher, subjct: subject, clas: Class) {
     let l: Schedule;
     l = this.listSchedule.filter(
       item => item.Day === day && item.Hour_in_dey === hour
         && item.Clss.CodeClass === clas.CodeClass
         && item.teacher.CodeTeacher === teacher.CodeTeacher
-        && item.SubjectIn.CodeSubject === subject.CodeSubject
+        && item.SubjectIn.CodeSubject === subjct.CodeSubject
     )[0];
 
     if (l === undefined) {
-      l = new Schedule(hour, clas, day, subject, teacher);
+      l = new Schedule(hour, clas, day, subjct, teacher);
     }
 
     return l;

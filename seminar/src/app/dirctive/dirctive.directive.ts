@@ -1,4 +1,4 @@
-import { Directive ,ElementRef,Input,Renderer2,OnInit} from '@angular/core';
+import { Directive, ElementRef, Input, Renderer2, OnInit } from '@angular/core';
 import { Schedule } from '../classes/Schedule';
 
 @Directive({
@@ -6,22 +6,25 @@ import { Schedule } from '../classes/Schedule';
 })
 export class permenentDirective implements OnInit {
 
-   @Input('permenent') b:Schedule;
- // @Input('substitute') substitute:string= "pink";
+  @Input('permenent') b: Schedule;
+  // @Input('substitute') substitute:string= "pink";
 
-  constructor(private el:ElementRef,private re:Renderer2) {
-    
-    
+  constructor(private el: ElementRef, private re: Renderer2) {
+
+
   }
-  ngOnInit(){
+  ngOnInit() {
 
-    
-      this.re.setStyle(this.el.nativeElement, "height","60px"); 
-      this.re.setStyle(this.el.nativeElement, "width","60px")
-         this.re.setStyle(this.el.nativeElement, "backgroundColor","rgb(250, 205, 204)"); 
-  
-    
-    
+    this.re.setStyle(this.el.nativeElement, '-webkit-appearance', 'textfield');
+    this.re.setStyle(this.el.nativeElement, 'padding', '2px');
+    this.re.setStyle(this.el.nativeElement, 'border', '4px inset');
+    this.re.setStyle(this.el.nativeElement, 'text-align', 'center');
+    this.re.setStyle(this.el.nativeElement, 'height', '65px');
+    this.re.setStyle(this.el.nativeElement, 'width', '85px');
+    this.re.setStyle(this.el.nativeElement, 'backgroundColor', 'rgb(250, 205, 204)');
+
+
+
 
   }
 

@@ -4,26 +4,17 @@ import { Presence } from 'src/app/classes/presence';
 import { Schedule } from 'src/app/classes/Schedule';
 import { Class } from 'src/app/classes/class';
 @Component({
-  selector: 'app-show-presence',
-  templateUrl: './show-presence.component.html',
+  selector: 'app-show-presenceByTeacher',
+  templateUrl: './show-presenceT.component.html',
   styleUrls: ['./show-presence.component.css']
 })
-export class ShowPresenceComponent implements OnInit {
-@Input() day:Schedule;
-@Input()ha:Schedule;
-l1:Schedule
-  constructor() 
-  {
-  
-   
-  }
-// f(){
-//   if(this.ha.Hour_in_dey>0)
-//   return true;
+export class ShowPresenceByTeacherComponent implements OnInit {
+  @Input() day: Schedule;
 
 
-// }
-  ngOnInit() {
-  }
+  constructor() { }
+
+  ngOnInit() { }
+
 
 }

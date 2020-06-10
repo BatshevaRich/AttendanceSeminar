@@ -4,22 +4,16 @@ import { Presence } from 'src/app/classes/presence';
 import { Schedule } from 'src/app/classes/Schedule';
 import { Class } from 'src/app/classes/class';
 @Component({
-  selector: 'app-show-presenceByTeacher',
-  templateUrl: './show-presenceT.component.html',
+  selector: 'app-show-presenceBySubject',
+  templateUrl: './show-presenceS.component.html',
   styleUrls: ['./show-presence.component.css']
 })
-export class ShowPresenceByTeacherComponent implements OnInit {
-@Input() day:Schedule;
+export class ShowPresenceBySubjectComponent implements OnInit {
+  @Input() day: Schedule;
+  // @Output() addNumber=new EventEmitter();
 
+  constructor() { }
 
-  constructor() 
-  {
-  
-   
-  }
+  ngOnInit() { }
 
-  ngOnInit() {
-  }
-
-  
 }
