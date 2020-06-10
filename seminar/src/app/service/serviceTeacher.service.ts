@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { Teacher } from 'src/app/classes/Techer';
+import { Teacher } from 'src/app/classes/Teacher';
 
 import { Observable } from 'rxjs';
 import { HttpParams } from '@angular/common/http';
@@ -22,12 +22,12 @@ export class TeacherService {
     return this.http.get<Teacher[]>(baseURL + 'getAllTeachers');
 
   }
-  AddTaecher(techer: Teacher) {
+  AddTaecher(teacher: Teacher) {
 
     let header = new HttpHeaders();
     header = header.set('Content-Type', 'application/json');
     const options = { headers: header };
-    this.http.post(baseURL + 'addTeacher', techer, options)
+    this.http.post(baseURL + 'addTeacher', teacher, options)
       .subscribe();
   }
   deleteTeacher(id: number) {

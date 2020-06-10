@@ -1,16 +1,16 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Teacher } from '../../classes/Techer';
+import { Teacher } from '../../classes/Teacher';
 import { fail } from 'assert';
 import { ElementRef } from '@angular/core';
 import { ViewChild } from '@angular/core';
 import { TeacherService } from 'src/app/service/serviceTeacher.service';
 @Component({
-  selector: 'app-techer',
-  templateUrl: './techer.component.html',
-  styleUrls: ['./techer.component.css']
+  selector: 'app-teacher',
+  templateUrl: './teacher.component.html',
+  styleUrls: ['./teacher.component.css']
 })
-export class TecherComponent implements OnInit {
+export class TeacherComponent implements OnInit {
   constructor(public service: TeacherService) {
     this.techar = new Teacher();
 
@@ -44,7 +44,7 @@ export class TecherComponent implements OnInit {
     this.service.AddTaecher(this.techar);
     this.Form.reset();
     // )
-    //  (new Techer(this.name, this.teken ,this.year));
+    //  (new Teacher(this.name, this.teken ,this.year));
   }
   Delete(n) {
     if (confirm('אם תמחקי את המורה ימחקו שעות הלימוד שלה.\nהאם ברצונך להמשיך במחיקת המורה  ' + n.Name + '?')) {

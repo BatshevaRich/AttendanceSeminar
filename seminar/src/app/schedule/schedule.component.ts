@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Schedule } from 'src/app/classes/Schedule';
 import { Class } from 'src/app/classes/class';
 import { subject } from 'src/app/classes/subject';
-import { Teacher } from 'src/app/classes/Techer';
+import { Teacher } from 'src/app/classes/Teacher';
 import { ClassComponent } from 'src/app/object/class/class.component';
 import { ClassSevice } from 'src/app/service/ClassSevice.service';
 //import { tick } from '@angular/core';
@@ -26,12 +26,12 @@ export class ScheduleComponent implements OnInit {
   classesListFilter: Array<Class> = []
   listScheduler: Array<ScheduleR> = []
   listSchedule: Array<Schedule> = []
-  techerListFilter: Array<Teacher> = []
+  teacherListFilter: Array<Teacher> = []
   teacherList: Array<Teacher> = []
   searchObj: Schedule;
   subjectFilter: any;
   classFilter: any;
-  techerFilter: any;
+  teacherFilter: any;
   defulteS = true;
   isShowClasses = false;
   isShowTeachers = false;
@@ -56,7 +56,7 @@ export class ScheduleComponent implements OnInit {
   }
   ngOnInit() {
     this.classFilter = "כל הכיתות"
-    this.techerFilter = "כל המורות"
+    this.teacherFilter = "כל המורות"
     this.subjectFilter = "כל המקצועות"
     this.server.getSchedule().subscribe((res) => {
       this.listScheduler = res;
@@ -66,7 +66,7 @@ export class ScheduleComponent implements OnInit {
 
         this.serviceTeacher.GetAllTeacher().subscribe((res) => {
           this.teacherList = res;
-          this.techerListFilter = this.teacherList;
+          this.teacherListFilter = this.teacherList;
           this.serviceSubject.getAllSubject().subscribe((res) => {
             this.subjects = res;
             this.subjectsListFilter = this.subjects;
@@ -76,8 +76,8 @@ export class ScheduleComponent implements OnInit {
               this.schedule1.Hour_in_dey = element.Hour_in_dey;
               this.schedule1.Day = element.Day
               this.teacherList.forEach(el => {
-                if (<number>element.Techer == el.CodeTeacher) {
-                  this.schedule1.Techer = el;
+                if (<number>element.Teacher == el.CodeTeacher) {
+                  this.schedule1.teacher = el;
                   return;
                 }
               }
@@ -113,7 +113,7 @@ export class ScheduleComponent implements OnInit {
     l = this.listSchedule.filter(
       item => item.Day == day && item.Hour_in_dey == hour
         && item.Clss.CodeClass == clas.CodeClass
-        && item.Techer.CodeTeacher == teacher.CodeTeacher
+        && item.teacher.CodeTeacher == teacher.CodeTeacher
         && item.SubjectIn.CodeSubject == subject.CodeSubject
     )[0];
 
@@ -133,13 +133,13 @@ export class ScheduleComponent implements OnInit {
 
     } else { this.classesListFilter = this.classesList }
 
-    if (this.techerFilter != "כל המורות") {
+    if (this.teacherFilter != "כל המורות") {
 
-      this.techerListFilter = this.teacherList.filter(
+      this.teacherListFilter = this.teacherList.filter(
 
-        item => item.CodeTeacher == this.techerFilter.CodeTeacher//לבדוק איך מקבלים את הערך שנבחר בדדל
+        item => item.CodeTeacher == this.teacherFilter.CodeTeacher//לבדוק איך מקבלים את הערך שנבחר בדדל
       );
-    } else { this.techerListFilter = this.teacherList }
+    } else { this.teacherListFilter = this.teacherList }
     if (this.subjectFilter != "כל המקצועות") {
       this.subjectsListFilter = this.subjects.filter(
         item => item.CodeSubject == this.subjectFilter.CodeSubject//לבדוק איך מקבלים את הערך שנבחר בדדל
@@ -166,7 +166,7 @@ export class ScheduleComponent implements OnInit {
   getScheduleT(day: number, hour: number, c: Teacher) {
     let l: Schedule;
     l = this.listSchedule.filter(
-      item => item.Hour_in_dey == hour && item.Day == day && item.Techer.CodeTeacher == c.CodeTeacher
+      item => item.Hour_in_dey == hour && item.Day == day && item.teacher.CodeTeacher == c.CodeTeacher
     )[0];
 
     if (l == undefined)

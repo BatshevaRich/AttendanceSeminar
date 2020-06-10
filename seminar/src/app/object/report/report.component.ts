@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Teacher } from 'src/app/classes/Techer';
+import { Teacher } from 'src/app/classes/Teacher';
 import { Dictionary } from 'src/app/classes/Dictionary';
 import { PresenceService } from 'src/app/service/presenceService.service';
 import { TeacherService } from 'src/app/service/serviceTeacher.service';

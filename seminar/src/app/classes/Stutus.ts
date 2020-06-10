@@ -1,8 +1,7 @@
-export enum Stutus
-{
+export enum Stutus {
     null,
-    present,// נוכחת,
-    sickness,// ,מחלה
-liberty,// ,חופשה
-   absent// חסרה
+    present, // נוכחת,
+    sickness, // ,מחלה
+    liberty, // ,חופשה
+    absent// חסרה
 }

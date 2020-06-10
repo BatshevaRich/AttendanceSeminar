@@ -13,7 +13,7 @@
 </select> 
 <br>
 <label for="teacher">:מורה</label><br>
-<select [(ngModel)]="techerFilter" (click)="gatAllClass">
+<select [(ngModel)]="teacherFilter" (click)="gatAllClass()">
   <option>כל המורות</option>
   <option *ngFor="let t of teacherList" [ngValue]="t">{{t.Name}}</option>
 </select>
@@ -51,7 +51,7 @@
 
 
 <div *ngIf="isShowTeachers">
-  <table *ngFor="let c of techerListFilter">
+  <table *ngFor="let c of teacherListFilter">
     <thead>
                 <th> </th>
                 <th>יום ראשון</th>

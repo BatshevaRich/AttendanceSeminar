@@ -4,7 +4,7 @@ import { Stutus } from 'src/app/classes/Stutus';
 import { presenceMat } from 'src/app/classes/presenceMat';
 import { subject } from 'src/app/classes/subject';
 import { Class } from 'src/app/classes/class';
-import { Teacher } from 'src/app/classes/Techer';
+import { Teacher } from 'src/app/classes/Teacher';
 import { Event } from '@angular/router';
 import { Data } from '@angular/router';
 import { ClassSevice } from 'src/app/service/ClassSevice.service';
@@ -53,11 +53,11 @@ export class PresenceComponent implements OnInit {
   subjectsListFilter: Array<subject> = [];
   classesListFilter: Array<Class> = [];
   listScheduler: Array<ScheduleR> = [];
-  techerListFilter: Array<Teacher> = [];
+  teacherListFilter: Array<Teacher> = [];
   searchObj: Schedule;
   subjectFilter: any;
   classFilter: any;
-  techerFilter: any;
+  teacherFilter: any;
   defulteS = true;
   isShowClasses = false;
   isShowTeachers = false;
@@ -91,7 +91,7 @@ export class PresenceComponent implements OnInit {
         this.classesListFilter = this.classList;
         this.teacherService.GetAllTeacher().subscribe((teacher) => {
           this.teacherList = teacher;
-          this.techerListFilter = this.teacherList;
+          this.teacherListFilter = this.teacherList;
           this.subjectService.getAllSubject().subscribe((subjectg) => {
             this.subjectList = subjectg;
             this.subjectsListFilter = this.subjectList;
@@ -102,8 +102,8 @@ export class PresenceComponent implements OnInit {
 
               // this.Schedule.push(this.schedule1);
               this.teacherList.forEach(el => {
-                if (elements.Techer as number === el.CodeTeacher) {
-                  this.schedule1.Techer = el;
+                if (elements.Teacher as number === el.CodeTeacher) {
+                  this.schedule1.teacher = el;
                   return;
                 }
               }
@@ -144,7 +144,7 @@ export class PresenceComponent implements OnInit {
   }
   ngOnInit() {
     this.classFilter = 'כל הכיתות'
-    this.techerFilter = 'כל המורות'
+    this.teacherFilter = 'כל המורות'
     this.subjectFilter = 'כל המקצועות'
     const today = new Date();
     const firstDate = new Date();
@@ -196,16 +196,16 @@ export class PresenceComponent implements OnInit {
     let a = this.getSchedule(Day, hour, c);
 
     this.listP.forEach(element => {
-      if (a.Techer.CodeTeacher === element.CodeTecher && a.Day === element.Day && a.Hour_in_dey === element.Mis_Hour) {
+      if (a.teacher.CodeTeacher === element.CodeTeacher && a.Day === element.Day && a.Hour_in_dey === element.Mis_Hour) {
         b = false;
         return false;
       }
     });
 
     if (b === true) {
-      this.p = new presenceMat(a.Techer, new Teacher(), false, a.Hour_in_dey, a.Day, a.Clss);
+      this.p = new presenceMat(a.teacher, new Teacher(), false, a.Hour_in_dey, a.Day, a.Clss);
       this.listPresense.push(this.p);
-      this.listP.push(new addPresence(this.rangeDates[0], hour, 3, a.Techer.CodeTeacher, Day));
+      this.listP.push(new addPresence(this.rangeDates[0], hour, 3, a.teacher.CodeTeacher, Day));
       this.ScheduleAddTeacher.push(a);
     }
   }
@@ -215,15 +215,15 @@ export class PresenceComponent implements OnInit {
     let a = this.getScheduleT(Day, hour, c);
 
     this.listP.forEach(element => {
-      if (a.Techer.CodeTeacher === element.CodeTecher && a.Day === element.Day && a.Hour_in_dey === element.Mis_Hour) {
+      if (a.teacher.CodeTeacher === element.CodeTeacher && a.Day === element.Day && a.Hour_in_dey === element.Mis_Hour) {
         b = false;
         return false;
       }
     });
     if (b === true) {
-      this.p = new presenceMat(a.Techer, new Teacher(), false, a.Hour_in_dey, a.Day, a.Clss);
+      this.p = new presenceMat(a.teacher, new Teacher(), false, a.Hour_in_dey, a.Day, a.Clss);
       this.listPresense.push(this.p);
-      this.listP.push(new addPresence(this.rangeDates[0], hour, 3, a.Techer.CodeTeacher, Day));
+      this.listP.push(new addPresence(this.rangeDates[0], hour, 3, a.teacher.CodeTeacher, Day));
       this.ScheduleAddTeacher.push(a);
     }
   }
@@ -233,15 +233,15 @@ export class PresenceComponent implements OnInit {
     let a = this.getScheduleSubject(Day, hour, c);
 
     this.listP.forEach(element => {
-      if (a.Techer.CodeTeacher === element.CodeTecher && a.Day === element.Day && a.Hour_in_dey === element.Mis_Hour) {
+      if (a.teacher.CodeTeacher === element.CodeTeacher && a.Day === element.Day && a.Hour_in_dey === element.Mis_Hour) {
         b = false;
         return false;
       }
     });
     if (b === true) {
-      this.p = new presenceMat(a.Techer, new Teacher(), false, a.Hour_in_dey, a.Day, a.Clss);
+      this.p = new presenceMat(a.teacher, new Teacher(), false, a.Hour_in_dey, a.Day, a.Clss);
       this.listPresense.push(this.p);
-      this.listP.push(new addPresence(this.rangeDates[0], hour, 3, a.Techer.CodeTeacher, Day));
+      this.listP.push(new addPresence(this.rangeDates[0], hour, 3, a.teacher.CodeTeacher, Day));
       this.ScheduleAddTeacher.push(a);
     }
   }
@@ -258,7 +258,7 @@ export class PresenceComponent implements OnInit {
           this.rangeDates[this.Schedule[index1].Day],
           this.Schedule[index1].Hour_in_dey,
           this.s,
-          this.Schedule[index1].Techer.CodeTeacher,
+          this.Schedule[index1].teacher.CodeTeacher,
           this.Schedule[index1].Day))
       }
 
@@ -268,11 +268,11 @@ export class PresenceComponent implements OnInit {
   delet(i: number) {
     const l = this.listPresense[i];
     this.listP.forEach(element => {
-      if (l.teacher1.CodeTeacher === element.CodeTecher && l.day === element.Day && l.hour === element.Mis_Hour) {
+      if (l.teacher1.CodeTeacher === element.CodeTeacher && l.day === element.Day && l.hour === element.Mis_Hour) {
         const i = this.listP.indexOf(element);
         this.listP.splice(i);
       }
-      if (this.listPresense[i].teacher2.CodeTeacher === element.CodeTecher) {
+      if (this.listPresense[i].teacher2.CodeTeacher === element.CodeTeacher) {
         let i = this.listP.indexOf(element);
         this.listP.splice(i);
       }
@@ -304,13 +304,13 @@ export class PresenceComponent implements OnInit {
       this.listTP.push(element.teacher1);
     });
     for (let index = 0; index < this.Schedule.length; index++) {
-      // if (this.listTP.includes(this.Schedule[index].Techer) === false&&this.)
+      // if (this.listTP.includes(this.Schedule[index].Teacher) === false&&this.)
       if (this.ScheduleAddTeacher.includes(this.Schedule[index]) === false) {
         this.listP.push(new addPresence(
           this.rangeDates[0],
           this.Schedule[index].Hour_in_dey,
           Stutus.present,
-          this.Schedule[index].Techer.CodeTeacher,
+          this.Schedule[index].teacher.CodeTeacher,
           this.Schedule[index].Day));
 
 
@@ -328,7 +328,7 @@ export class PresenceComponent implements OnInit {
     let element: Schedule;
     for (let index = 1; index < 8; index++) {
       element = this.getScheduleT(l.day, index, l.teacher1);
-      if (element.Techer.CodeTeacher === l.teacher1.CodeTeacher) {
+      if (element.teacher.CodeTeacher === l.teacher1.CodeTeacher) {
         this.addTeacherByTeacher(l.day, index, l.teacher1);
       }
     }
@@ -352,13 +352,13 @@ export class PresenceComponent implements OnInit {
 
     } else { this.classesListFilter = this.classList; }
 
-    if (this.techerFilter != 'כל המורות') {
+    if (this.teacherFilter != 'כל המורות') {
 
-      this.techerListFilter = this.teacherList.filter(
+      this.teacherListFilter = this.teacherList.filter(
 
-        item => item.CodeTeacher === this.techerFilter.CodeTeacher// לבדוק איך מקבלים את הערך שנבחר בדדל
+        item => item.CodeTeacher === this.teacherFilter.CodeTeacher// לבדוק איך מקבלים את הערך שנבחר בדדל
       );
-    } else { this.techerListFilter = this.teacherList; }
+    } else { this.teacherListFilter = this.teacherList; }
     if (this.subjectFilter != 'כל המקצועות') {
       this.subjectsListFilter = this.subjectList.filter(
         item => item.CodeSubject === this.subjectFilter.CodeSubject// לבדוק איך מקבלים את הערך שנבחר בדדל
@@ -386,7 +386,7 @@ export class PresenceComponent implements OnInit {
   getScheduleT(day: number, hour: number, c: Teacher) {
     let l: Schedule;
     l = this.Schedule.filter(
-      item => item.Hour_in_dey === hour && item.Day === day && item.Techer.CodeTeacher === c.CodeTeacher
+      item => item.Hour_in_dey === hour && item.Day === day && item.teacher.CodeTeacher === c.CodeTeacher
     )[0];
 
     if (l === undefined) {

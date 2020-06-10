@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { PresenceComponent } from './object/presence/presence.component';
 import { ScheduleComponent } from '../app/schedule/schedule.component';
-import { TecherComponent } from './object/techer/techer.component';
+import { TeacherComponent } from './object/teacher/teacher.component';
 import { HomeComponent } from './UI/home/home.component';
 import { ClassComponent } from '../app/object/class/class.component';
 import { ReportComponent } from 'src/app/object/report/report.component';
@@ -42,7 +42,7 @@ const route: Routes = [
   { path: 'Subject', component: SubjectComponent },
   { path: 'Class', component: ClassComponent },
   { path: 'manager', component: ManagerComponent },
-  { path: 'Teacher', component: TecherComponent },
+  { path: 'Teacher', component: TeacherComponent },
 ];
 
 @NgModule({
@@ -50,7 +50,7 @@ const route: Routes = [
     AppComponent,
     PresenceComponent,
     ScheduleComponent,
-    TecherComponent,
+    TeacherComponent,
     HomeComponent,
     ReportComponent,
     SubjectComponent,

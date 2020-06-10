@@ -1,17 +1,16 @@
-import { Teacher } from 'src/app/classes/Techer';
+import { Teacher } from 'src/app/classes/Teacher';
 import { Class } from './class';
 
-export class presenceMat
-{
+export class presenceMat {
     constructor(
-        public teacher1:Teacher,
-        public teacher2:Teacher,
-        public bool:boolean,
-        public hour:number,
-        public day:number,
-        public c:Class,
-    ){}
- } 
+        public teacher1: Teacher,
+        public teacher2: Teacher,
+        public bool: boolean,
+        public hour: number,
+        public day: number,
+        public c: Class,
+    ) { }
+}
 //  public teacherName :string="",
 //         public teacherTeken:boolean=false,
 //         public className:string="",
