@@ -1,0 +1,185 @@
+<div>
+    <table class="table" *ngIf="listPresense.length" class="table" dir="rtl">
+        <thead>
+            <th scope="col">מורה מ"מ</th>
+            <th scope="col">?מחלה</th>
+            <th scope="col">מורה</th>
+            <th scope="col"> יום</th>
+            <th scope="col">שעה ביום</th>
+            <th scope="col">כיתה</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let l of listPresense; let i=index">
+                <td>{{i+1}}</td>
+                <!-- לא נותן לבצע מחיקה למה? -->
+                <td> <button (click)="delet(i)">למחיקה</button></td>
+                <td>
+                    <select [(ngModel)]="l.teacher2">
+                        <option *ngFor="let tl of teacherList" [ngValue]="tl">
+                            <div *ngIf="tl.CodeTeacher!=l.teacher1.CodeTeacher">{{tl.CodeTeacher}}{{ tl.Name }}</div>
+                        </option>
+                    </select>
+                </td>
+                <td>
+                    <input type="checkbox" [checked]="l.bool" (change)="l.bool = !l.bool">
+                </td>
+                <td>
+                    <div>
+                        <app-show-teacher [showTeacher]="l.teacher1"></app-show-teacher>
+                    </div>
+                </td>
+                <td>{{l.hour}}</td>
+                <td>{{l.day}}</td>
+                <td>{{l.c.Name}}</td>
+                <td><button (click)="addDay(l)">להוספת כל היום</button></td>
+                <td><button (click)="addWeek(l)">להוספת כל השבוע</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <br><br>
+    <br>
+    <!-- the date לא עובד לי ה-range טווח פעם עבד לי עם המתרגלת היום כברל לא בגלל שחסר התקנות ולא הצלחתי להתקין  אשמח אם תצלחי  -->
+    <div class="ui-g-12 ui-md-4">
+        <p-calendar placeholder="Choose range of date" [(ngModel)]="rangeDates" selectionMode="range"
+            readonlyInput="true"></p-calendar>
+    </div>
+    <button (click)="addVaction()">להוספת חופשה</button>
+    <div>
+        <p>אפשריות סינון</p>
+        <h2>חיפוש לפי:</h2>
+        <label for="class">:כיתה</label><br>
+        <select [(ngModel)]="classFilter">
+            <option>כל הכיתות</option>
+            <option *ngFor="let c of classList" [ngValue]="c">{{c.Name}}</option>
+        </select>
+        <br>
+        <label for="subject">:מקצוע</label><br>
+        <select [(ngModel)]="subjectFilter">
+            <option>כל המקצועות</option>
+            <option *ngFor="let s of subjectList" [ngValue]="s">{{s.Name}}</option>
+        </select>
+        <br>
+        <label for="teacher">:מורה</label><br>
+        <select [(ngModel)]="teacherFilter">
+            <!-- (click)="gatAllClass() -->
+            <option>כל המורות</option>
+            <option *ngFor="let t of teacherList" [ngValue]="t">{{t.Name}}</option>
+        </select>
+        <br>
+        <button (click)="search()">סנן</button>
+    </div>
+    <button (click)="showByClasses()" class="Icon element">לפי כיתות</button>
+    <button (click)="showByTeachers()">לפי מורות</button>
+    <button (click)="showBySubjects()">לפי מקצועות</button>
+    <div *ngIf="isShowClasses">
+        <table *ngFor="let c of classesListFilter">
+            <thead>
+                <th> </th>
+                <th>יום ראשון</th>
+                <th> יום שני</th>
+                <th>יום שלישי</th>
+                <th> יום רביעי</th>
+                <th>יום חמישי</th>
+                <th> יום שישי</th>
+            </thead>
+            <tbody>
+                <tr>{{c.Name}}</tr>
+
+            </tbody>
+            <tr *ngFor="let h of hours">
+                <td>{{h}}</td>
+                <td *ngFor="let d of days">
+                    <div (click)="addTeacher(d,h,c) ">&nbsp;
+                        <app-show-presence [day]="getScheduleClass(d,h,c)"></app-show-presence>
+                    </div>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+
+
+    <!--  לא הצלחתי להוסיף טאב כבקשת המורה אולי אחרי התקנת העיצובים תצלחי כאן את הגרופ(קבוצה  ובתוך אני אסמן לך טאב שיוסף בכל פור (לולואה) -->
+
+    <div *ngIf="isShowTeachers">
+        <table *ngFor="let c of teacherListFilter">
+            <thead>
+                <th> </th>
+                <th>יום ראשון</th>
+                <th> יום שני</th>
+                <th>יום שלישי</th>
+                <th> יום רביעי</th>
+                <th>יום חמישי</th>
+                <th> יום שישי</th>
+            </thead>
+            <tbody>
+                <!--כאן הטאב עם שם המורה  -->
+                <tr>{{c.Name}}</tr>
+
+            </tbody>
+            <tr *ngFor="let h of hours">
+                <td>{{h}}</td>
+                <td *ngFor="let d of days">
+                    <div (click)="addTeacherByTeacher(d,h,c)">&nbsp;
+                        <app-show-presenceByTeacher [day]="getScheduleT(d,h,c)"></app-show-presenceByTeacher>
+                    </div>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+    <div *ngIf="isShowSubjects">
+        <table class="table" *ngFor="let c of subjectsListFilter">
+            <thead>
+                <th> </th>
+                <th>יום ראשון</th>
+                <th> יום שני</th>
+                <th>יום שלישי</th>
+                <th> יום רביעי</th>
+                <th>יום חמישי</th>
+                <th> יום שישי</th>
+            </thead>
+            <tbody>
+                <tr>{{c.Name}}</tr>
+            </tbody>
+            <tr *ngFor="let h of hours">
+                <td>{{h}}</td>
+                <td *ngFor="let d of days">
+                    <div (click)="addTeacherBySubject(d,h,c)">&nbsp;
+                        <app-show-presenceBySubject [day]="getScheduleSubject(d,h,c)"></app-show-presenceBySubject>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+    <!-- <table *ngFor="let c of classList">
+        
+            <thead>
+            <th>{{c.Name}} </th>
+            <th>יום ראשון</th>
+            <th> יום שני</th>
+            <th>יום שלישי</th>
+            <th> יום רביעי</th>
+            <th>יום חמישי</th>
+            <th> יום שישי</th>
+        </thead>
+        <tbody>
+            <tr><mat-tab >{{c.name}}</mat-tab></tr>
+            <tr *ngFor="let h of hours">
+                <td>{{h}}</td>
+                <td *ngFor="let d of days">
+                    <div (click)="addTeacher(d,h,c)">&nbsp;
+                        <app-show-presence [day]="getSchedule(d,h,c)"  [ha]="getH(d,h,c)"></app-show-presence>
+                    </div>
+                    
+                </td>
+            </tr>
+        </tbody>
+
+    </table>  -->
+    <!-- </mat-tab-group> -->
+
+    <button>לצבירה</button>
+</div>
