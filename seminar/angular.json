@@ -24,14 +24,15 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css", 
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/styles.css",
               "node_modules/bootstrap/dist/css/bootstrap.css"
-           ],
-        "scripts": [ 
+            ],
+            "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.bundle.js",
               "node_modules/jspdf/dist/jspdf.min.js",
               "node_modules/jspdf-autotable/dist/jspdf.plugin.autotable.js"
-          ]
+            ]
           },
           "configurations": {
             "production": {

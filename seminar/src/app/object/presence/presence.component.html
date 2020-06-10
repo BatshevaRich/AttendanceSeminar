@@ -39,11 +39,6 @@
     <br><br>
     <br>
     <!-- the date לא עובד לי ה-range טווח פעם עבד לי עם המתרגלת היום כברל לא בגלל שחסר התקנות ולא הצלחתי להתקין  אשמח אם תצלחי  -->
-    <div class="ui-g-12 ui-md-4">
-        <p-calendar placeholder="Choose range of date" [(ngModel)]="rangeDates" selectionMode="range"
-            readonlyInput="true"></p-calendar>
-    </div>
-    <button (click)="addVaction()">להוספת חופשה</button>
     <div>
         <p>אפשריות סינון</p>
         <h2>חיפוש לפי:</h2>
@@ -94,6 +89,10 @@
                     </div>
                 </td>
             </tr>
+    <div dir="ltr">
+        <ngb-datepicker #dp (dateSelect)="onDateSelection($event)" [displayMonths]="2" [dayTemplate]="t"
+            outsideDays="hidden">
+        </ngb-datepicker>
 
         </table>
     </div>

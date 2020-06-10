@@ -20,12 +20,21 @@ import { Schedule } from 'src/app/classes/Schedule';
 import { Scheduler } from 'rxjs/internal/Scheduler';
 import { CalendarModule } from 'primeng/calendar';
 import { FormGroup, FormControl } from '@angular/forms';
+import { NgbDate, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-presence',
   templateUrl: './presence.component.html',
   styleUrls: ['./presence.component.css']
 })
 export class PresenceComponent implements OnInit {
+  hoveredDate: NgbDate | null = null;
+
+  fromDate: NgbDate;
+  toDate: NgbDate | null = null;
+
+
+
+
   p: presenceMat;
   days: number[] = [1, 2, 3, 4, 5, 6];
   hours: number[];
@@ -78,6 +87,10 @@ export class PresenceComponent implements OnInit {
     public subjectService: SubjectSevice,
     public teacherService: TeacherService,
     public presenceService: PresenceService) {
+    public presenceService: PresenceService,
+    calendar: NgbCalendar) {
+    this.fromDate = calendar.getToday();
+    this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
     // this.myGroup = new FormGroup({
     //   date: new FormControl('')
     // });
@@ -422,6 +435,29 @@ export class PresenceComponent implements OnInit {
   showBySubjects() {
     this.isShowSubjects = true;
     this.isShowTeachers = this.isShowClasses = false;
+  }
+
+  onDateSelection(date: NgbDate) {
+    if (!this.fromDate && !this.toDate) {
+      this.fromDate = date;
+    } else if (this.fromDate && !this.toDate && date.after(this.fromDate)) {
+      this.toDate = date;
+    } else {
+      this.toDate = null;
+      this.fromDate = date;
+    }
+  }
+
+  isHovered(date: NgbDate) {
+    return this.fromDate && !this.toDate && this.hoveredDate && date.after(this.fromDate) && date.before(this.hoveredDate);
+  }
+
+  isInside(date: NgbDate) {
+    return this.toDate && date.after(this.fromDate) && date.before(this.toDate);
+  }
+
+  isRange(date: NgbDate) {
+    return date.equals(this.fromDate) || (this.toDate && date.equals(this.toDate)) || this.isInside(date) || this.isHovered(date);
   }
 
 }

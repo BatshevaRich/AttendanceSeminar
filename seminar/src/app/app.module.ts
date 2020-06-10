@@ -30,6 +30,7 @@ import { permenentDirective } from './dirctive/dirctive.directive';
 import { } from './dirctive/d.directive';
 import { HeaderComponent } from './UI/header/header.component';
 import { FooterComponent } from './UI/footer/footer.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 // import {MatGridListModule} from '@angular/primeng';
 // import {AccordionModule,MenuItem} from 'primeng/*';
@@ -73,7 +74,8 @@ const route: Routes = [
     BrowserAnimationsModule,
     FormsModule,
     RouterModule.forRoot(route),
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [SubjectSevice],
   bootstrap: [AppComponent]
