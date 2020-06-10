@@ -17,13 +17,13 @@ export class ClassComponent implements OnInit {
     this.class = new Class();
   }
   class: Class;
-  search: "";
-  color: string
-  classList: Class[]
-  
+  search: '';
+  color: string;
+  classList: Class[];
+
    ngOnInit() {
     this.getAllClass();
-  
+
 
   }
   private getAllClass() {
@@ -33,13 +33,13 @@ export class ClassComponent implements OnInit {
   }
 
   onSubmitForm() {
-    this.server.AddClass(this.class)
+    this.server.AddClass(this.class);
     this.form.reset();
 
   }
-  Delete(n:Class) { 
-  this.server.removeClass(n.CodeClass)
+  Delete(n: Class) {
+  this.server.removeClass(n.CodeClass);
   this.getAllClass();
-   
+
   }
 }

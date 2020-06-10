@@ -1,0 +1,50 @@
+<div class="row  text-right">
+    <div class="col-sm">
+        <div class="card shadow-sm p-3 mb-5 bg-white rounded">
+            <div class="card-body">
+                <h5 class="card-title">הוספת כיתה חדשה</h5>
+                <form (ngSubmit)="onSubmitForm()" #signupForm="ngForm" dir="rtl">
+                    <div class="form-group">
+                        <label for="name">שם: </label>
+                        <input [(ngModel)]="class.Name" name="name" type="text" class="form-control" id="name"
+                            aria-describedby="name" required>
+                    </div>
+                    <button type="submit" [disabled]="signupForm.invalid" class="btn btn-primary">הוספה</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-8">
+        <div class="card shadow-sm p-3 mb-5 bg-white rounded">
+            <form>
+                <div class="card-header">
+                    <h2 dir="rtl" class="text-center">כל הכיתות</h2>
+                    <label class="sr-only" for="search">חיפוש מקצוע</label>
+                    <div class="input-group mb-2">
+                        <div class="input-group-append  ">
+                            <div class="input-group-text">חיפוש מקצוע</div>
+                        </div>
+                        <input [(ngModel)]="search" id="search" class="text-center form-control form-control-lg"
+                            placeholder="התחילי להקליד..." name="search"><br>
+                    </div>
+                </div>
+                <br>
+                <ul class="list-group list-group-flush" *ngFor="let n of classList | filter: search" name="divS">
+                    <li class="list-group-item">
+                        <div class="container">
+                            <div class="row">
+                    <li class="col card-title list-group-item">
+                        כיתה {{n.Name}}
+                    </li>
+                    <div class="col">
+                        <button type="button" class="btn btn-danger btn-block" (click)="Delete(n)">למחיקה</button>
+                    </div>
+        </div>
+    </div>
+    </li>
+
+    </ul>
+    </form>
+</div>
+</div>

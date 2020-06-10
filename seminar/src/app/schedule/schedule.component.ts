@@ -3,7 +3,7 @@ import { Schedule } from 'src/app/classes/Schedule';
 import { Class } from 'src/app/classes/class';
 import { subject } from 'src/app/classes/subject';
 import { Teacher } from 'src/app/classes/Techer';
-import { ClassComponent } from 'src/app/class/class.component';
+import { ClassComponent } from 'src/app/object/class/class.component';
 import { ClassSevice } from 'src/app/service/ClassSevice.service';
 //import { tick } from '@angular/core';
 import { SubjectSevice } from 'src/app/service/SubjectService.service';

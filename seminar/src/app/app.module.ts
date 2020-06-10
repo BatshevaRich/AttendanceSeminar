@@ -8,7 +8,7 @@ import { PresenceComponent } from './object/presence/presence.component';
 import { ScheduleComponent } from '../app/schedule/schedule.component';
 import { TecherComponent } from '../app/techer/techer.component';
 import { HomeComponent } from './UI/home/home.component';
-import { ClassComponent } from '../app/class/class.component';
+import { ClassComponent } from '../app/object/class/class.component';
 import { ReportComponent } from 'src/app/report/report.component';
 import { SubjectComponent } from 'src/app/object/subject/subject.component';
 import { FilterPipe } from 'src/app/pipes/filter.pipe';
