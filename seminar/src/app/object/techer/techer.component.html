@@ -1,0 +1,67 @@
+<div class="row  text-right">
+  <div class="col-sm">
+    <div class="card shadow-sm p-3 mb-5 bg-white rounded">
+      <div class="card-body">
+        <h5 class="card-title">הוספת מורה חדשה</h5>
+        <form (ngSubmit)="onSubmitForm()" #signupForm="ngForm" dir="rtl">
+          <div class="form-group">
+            <label for="id">ID: </label>
+            <input [(ngModel)]="techar.CodeTeacher" name="id" type="number" class="form-control" id="id"
+              aria-describedby="id" required>
+          </div>
+          <div class="form-group">
+            <label for="name">שם: </label>
+            <input [(ngModel)]="techar.Name" name="name" type="text" class="form-control" id="name"
+              aria-describedby="name" required>
+          </div>
+          <div class="form-group">
+            <label for="permanent">תקן? </label>&nbsp;
+            <input type="checkbox" [ngModel]="techar.Permanent" [ngModelOptions]="{standalone: true}"
+              (change)="techar.Permanent = !techar.Permanent" name="permanent" class="form-check-input" id="permanent">
+          </div>
+          <div class="form-group">
+            <label for="hours">שנות תקן: </label>
+            <input [(ngModel)]="techar.Hour_teken_month" [disabled]="!techar.Permanent" name="hours" type="number"
+              class="form-control" id="hours" aria-describedby="hours">
+          </div>
+          <button type="submit" [disabled]="signupForm.invalid" class="btn btn-primary">הוספה</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-8">
+    <div class="card shadow-sm p-3 mb-5 bg-white rounded">
+      <form>
+        <div class="card-header">
+          <h2 dir="rtl" class="text-center">כל המורות</h2>
+          <label class="sr-only" for="search">חיפוש מורה</label>
+          <div class="input-group mb-2">
+            <div class="input-group-append  ">
+              <div class="input-group-text">חיפוש מורה</div>
+            </div>
+            <input [(ngModel)]="search" id="search" class="text-center form-control form-control-lg"
+              placeholder="התחילי להקליד..." name="search"><br>
+          </div>
+        </div>
+        <br>
+        <ul class="list-group list-group-flush" *ngFor="let n of names | filter: search" name="divS">
+          <li class="list-group-item">
+            <div class="container">
+              <div class="row">
+          <li class="col card-title list-group-item">
+            <app-show-teacher [showTeacher]="n"></app-show-teacher>
+          </li>
+          <div class="col">
+            <button type="button" class="btn btn-warning btn-block" (click)="update(n)">לעדכון</button>
+            <button type="button" class="btn btn-danger btn-block" (click)="Delete(n)">למחיקה</button>
+
+          </div>
+    </div>
+  </div>
+  </li>
+
+  </ul>
+  </form>
+</div>
+</div>

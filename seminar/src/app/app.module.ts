@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { PresenceComponent } from './object/presence/presence.component';
 import { ScheduleComponent } from '../app/schedule/schedule.component';
-import { TecherComponent } from '../app/techer/techer.component';
+import { TecherComponent } from './object/techer/techer.component';
 import { HomeComponent } from './UI/home/home.component';
 import { ClassComponent } from '../app/object/class/class.component';
 import { ReportComponent } from 'src/app/report/report.component';

@@ -1,7 +1,6 @@
-import { Component, OnInit,Output ,EventEmitter} from '@angular/core';
+import { Component, OnInit, Output , EventEmitter} from '@angular/core';
 import { NgForm } from '@angular/forms';
-import {Teacher} from"../classes/Techer"
-//import { Service } from 'src/app/service/Service.service';
+import {Teacher} from '../../classes/Techer';
 import { fail } from 'assert';
 import { ElementRef } from '@angular/core';
 import { ViewChild } from '@angular/core';
@@ -12,25 +11,22 @@ import { TeacherService } from 'src/app/service/serviceTeacher.service';
   styleUrls: ['./techer.component.css']
 })
 export class TecherComponent implements OnInit {
-// public add: Service
-  constructor(public service:TeacherService) 
-  {
+  constructor(public service: TeacherService) {
     this.techar = new Teacher();
-    
+
    }
 
-  names:Teacher[]
-  //=[new Teacher(12345,"ruth",true),new Teacher(6789),new Teacher(67890)];
-  techar:Teacher;
-  showSuccess=false;
-  successMsg="הוספת בהצלחה את מורה מספר..." ;
- search:"";
- teacherDel:Teacher=new Teacher;
+  names: Teacher[] = [];
+  // =[new Teacher(12345,"ruth",true),new Teacher(6789),new Teacher(67890)];
+  techar: Teacher;
+  showSuccess = false;
+  successMsg = 'הוספת בהצלחה את מורה מספר...' ;
+ search: '';
+ teacherDel: Teacher = new Teacher();
   @ViewChild('divS') divHtml: ElementRef;
  @ViewChild('signupForm') Form: NgForm;
- 
-  ngOnInit()
-   {
+
+  ngOnInit() {
      this.getAllTeachers();
   }
   private getAllTeachers() {
@@ -44,25 +40,23 @@ export class TecherComponent implements OnInit {
   // teken: boolean;
   // year: number;
   onSubmitForm() {
-  
+
      this.service.AddTaecher(this.techar) ;
-      this.Form.reset();
-  //)
+     this.Form.reset();
+  // )
 //  (new Techer(this.name, this.teken ,this.year));
   }
-  Delete(n)
-  { 
-    alert("אם תמחק את המורה ימחקו שעות הלימוד שלה אם ברצונך רק להחליף מורה עדכן פרטי מורה")
+  Delete(n) {
+    alert('אם תמחק את המורה ימחקו שעות הלימוד שלה אם ברצונך רק להחליף מורה עדכן פרטי מורה');
 
     this.service.deleteTeacher(n.CodeTeacher);
-     
-     this.getAllTeachers();
+
+    this.getAllTeachers();
     }
-     update(n)
-    {
-      n.Name=this.techar.Name
-      n.Hour_teken_month=this.techar.Hour_teken_month
-      n.Permanent=this.techar.Permanent
-      this.service.update(n)
+     update(n) {
+      n.Name = this.techar.Name;
+      n.Hour_teken_month = this.techar.Hour_teken_month;
+      n.Permanent = this.techar.Permanent;
+      this.service.update(n);
    }
 }
