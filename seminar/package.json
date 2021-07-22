@@ -34,7 +34,7 @@
     "primeng": "^9.0.0-rc.2",
     "rxjs": "~6.5.5",
     "tslib": "^1.10.0",
-    "xlsx": "^0.15.4",
+    "xlsx": "^0.17.0",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
